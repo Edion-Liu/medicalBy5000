@@ -20,3 +20,4 @@
 |2018-04-02 17:03:28.578||WARN -[请求失败，url编码解析有问题:viewId[404];path:404]-[c.c.weixin.controller.ViewController]-[http-nio-5095-exec-7]
 |2018-04-02 17:03:28.586||WARN -[请求失败，url编码解析有问题:viewId[404];path:404]-[c.c.weixin.controller.ViewController]-[http-nio-5095-exec-6]
 |2018-04-02 17:03:28.597||WARN -[请求失败，url编码解析有问题:viewId[404];path:404]-[c.c.weixin.controller.ViewController]-[http-nio-5095-exec-2]
+|2018-04-02 17:48:08.809||ERROR-[maxIdle is deprecated]-[c.a.d.pool.DruidAbstractDataSource]-[main]
