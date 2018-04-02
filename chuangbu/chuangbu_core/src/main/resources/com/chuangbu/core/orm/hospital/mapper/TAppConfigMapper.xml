@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+<mapper namespace="com.chuangbu.core.orm.hospital.mapper.TAppConfigMapper">
+
+	<resultMap id="Result" type="com.chuangbu.core.orm.hospital.domain.TAppConfig">
+				<id property="id" column="id" />
+				<result property="appId" column="app_id" />
+				<result property="mehId" column="meh_id" />
+				<result property="appsecret" column="appsecret" />
+				<result property="appKey" column="app_key" />
+				<result property="remark" column="remark" />
+				<result property="orgId" column="org_id" />
+				<result property="rpcUrl" column="rpc_url" />
+				<result property="name" column="name" />
+				<result property="code" column="code" />
+				<result property="address" column="address" />
+				<result property="longitude" column="longitude" />
+				<result property="latitude" column="latitude" />
+				<result property="valid" column="valid" />
+	</resultMap>
+	
+	<sql id="columns">
+		id,app_id,meh_id,appsecret,app_key,remark,org_id,rpc_url,name,code,address,longitude,latitude,valid
+	</sql>
+	
+	<sql id="dynamicWhere">
+		<where>
+					<if test="@Ognl@isNotEmpty(id)"> AND id  LIKE '%${id}%'  </if>
+					<if test="@Ognl@isNotEmpty(appId)"> AND app_id  LIKE '%${appId}%'  </if>
+					<if test="@Ognl@isNotEmpty(mehId)"> AND meh_id  LIKE '%${mehId}%'  </if>
+					<if test="@Ognl@isNotEmpty(appsecret)"> AND appsecret  LIKE '%${appsecret}%'  </if>
+					<if test="@Ognl@isNotEmpty(appKey)"> AND app_key  LIKE '%${appKey}%'  </if>
+					<if test="@Ognl@isNotEmpty(remark)"> AND remark  LIKE '%${remark}%'  </if>
+					<if test="@Ognl@isNotEmpty(orgId)"> AND org_id  LIKE '%${orgId}%'  </if>
+					<if test="@Ognl@isNotEmpty(rpcUrl)"> AND rpc_url  LIKE '%${rpcUrl}%'  </if>
+					<if test="@Ognl@isNotEmpty(name)"> AND name  LIKE '%${name}%'  </if>
+					<if test="@Ognl@isNotEmpty(code)"> AND code  LIKE '%${code}%'  </if>
+					<if test="@Ognl@isNotEmpty(address)"> AND address  LIKE '%${address}%'  </if>
+					<if test="@Ognl@isNotEmpty(longitude)"> AND longitude  LIKE '%${longitude}%'  </if>
+					<if test="@Ognl@isNotEmpty(latitude)"> AND latitude  LIKE '%${latitude}%'  </if>
+					<if test="@Ognl@isNotEmpty(valid)"> AND valid  =#{valid} </if>
+		</where>
+	</sql>
+
+	<insert id="save" parameterType="com.chuangbu.core.orm.hospital.domain.TAppConfig">
+		INSERT INTO t_app_config
+		(
+		<trim prefix="" suffixOverrides=",">  
+				<if test="@Ognl@isNotEmpty(id)">  id,  </if>
+				<if test="@Ognl@isNotEmpty(appId)">  app_id,  </if>
+				<if test="@Ognl@isNotEmpty(mehId)">  meh_id,  </if>
+				<if test="@Ognl@isNotEmpty(appsecret)">  appsecret,  </if>
+				<if test="@Ognl@isNotEmpty(appKey)">  app_key,  </if>
+				<if test="@Ognl@isNotEmpty(remark)">  remark,  </if>
+				<if test="@Ognl@isNotEmpty(orgId)">  org_id,  </if>
+				<if test="@Ognl@isNotEmpty(rpcUrl)">  rpc_url,  </if>
+				<if test="@Ognl@isNotEmpty(name)">  name,  </if>
+				<if test="@Ognl@isNotEmpty(code)">  code,  </if>
+				<if test="@Ognl@isNotEmpty(address)">  address,  </if>
+				<if test="@Ognl@isNotEmpty(longitude)">  longitude,  </if>
+				<if test="@Ognl@isNotEmpty(latitude)">  latitude,  </if>
+				<if test="@Ognl@isNotEmpty(valid)">  valid </if>
+		</trim>
+		)
+		VALUES
+		(
+		<trim prefix="" suffixOverrides=",">  
+				<if test="@Ognl@isNotEmpty(id)"> #{id},  </if>
+				<if test="@Ognl@isNotEmpty(appId)"> #{appId},  </if>
+				<if test="@Ognl@isNotEmpty(mehId)"> #{mehId},  </if>
+				<if test="@Ognl@isNotEmpty(appsecret)"> #{appsecret},  </if>
+				<if test="@Ognl@isNotEmpty(appKey)"> #{appKey},  </if>
+				<if test="@Ognl@isNotEmpty(remark)"> #{remark},  </if>
+				<if test="@Ognl@isNotEmpty(orgId)"> #{orgId},  </if>
+				<if test="@Ognl@isNotEmpty(rpcUrl)"> #{rpcUrl},  </if>
+				<if test="@Ognl@isNotEmpty(name)"> #{name},  </if>
+				<if test="@Ognl@isNotEmpty(code)"> #{code},  </if>
+				<if test="@Ognl@isNotEmpty(address)"> #{address},  </if>
+				<if test="@Ognl@isNotEmpty(longitude)"> #{longitude},  </if>
+				<if test="@Ognl@isNotEmpty(latitude)"> #{latitude},  </if>
+				<if test="@Ognl@isNotEmpty(valid)"> #{valid} </if>
+		</trim>
+		)
+	</insert>
+	
+	<delete id="delete" parameterType="String">
+		DELETE FROM t_app_config 
+		WHERE 			id
+		=#{			id
+		}
+	</delete>
+	
+	<update id="update" parameterType="com.chuangbu.core.orm.hospital.domain.TAppConfig">
+		UPDATE t_app_config 
+			<set>
+					<if test="@Ognl@isNotEmpty(appId)"> app_id=#{appId},  </if>
+					<if test="@Ognl@isNotEmpty(mehId)"> meh_id=#{mehId},  </if>
+					<if test="@Ognl@isNotEmpty(appsecret)"> appsecret=#{appsecret},  </if>
+					<if test="@Ognl@isNotEmpty(appKey)"> app_key=#{appKey},  </if>
+					<if test="@Ognl@isNotEmpty(remark)"> remark=#{remark},  </if>
+					<if test="@Ognl@isNotEmpty(orgId)"> org_id=#{orgId},  </if>
+					<if test="@Ognl@isNotEmpty(rpcUrl)"> rpc_url=#{rpcUrl},  </if>
+					<if test="@Ognl@isNotEmpty(name)"> name=#{name},  </if>
+					<if test="@Ognl@isNotEmpty(code)"> code=#{code},  </if>
+					<if test="@Ognl@isNotEmpty(address)"> address=#{address},  </if>
+					<if test="@Ognl@isNotEmpty(longitude)"> longitude=#{longitude},  </if>
+					<if test="@Ognl@isNotEmpty(latitude)"> latitude=#{latitude},  </if>
+					<if test="@Ognl@isNotEmpty(valid)"> valid=#{valid} </if>
+		    </set>
+		WHERE 			id
+		=#{id}
+	</update>
+	
+	<select id="findOne" parameterType="String" resultMap="Result">
+		SELECT <include refid="columns"/>
+		FROM t_app_config
+		WHERE 			id
+		=#{			id
+		}
+	</select>
+	
+	<select id="findAll" parameterType="String" resultMap="Result">
+		SELECT <include refid="columns"/>
+		FROM t_app_config
+		<if test="@Ognl@isNotEmpty(list)">
+		WHERE 			id
+		 IN
+		<foreach item="item" index="index" collection="list" open="(" separator="," close=")">  
+				#{item}
+		</foreach>
+		</if>
+	</select>
+	
+	<select id="find" parameterType="com.chuangbu.core.orm.hospital.domain.TAppConfig" resultMap="Result">
+		SELECT <include refid="columns"/>
+		FROM t_app_config
+		<include refid="dynamicWhere"/>
+	</select>
+</mapper>

@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+<mapper namespace="com.chuangbu.core.orm.hospital.mapper.RegisterOrderMapper">
+
+	<resultMap id="Result" type="com.chuangbu.core.orm.hospital.domain.RegisterOrder">
+				<id property="id" column="id" />
+				<result property="orderNo" column="order_no" />
+				<result property="prepayId" column="prepay_id" />
+				<result property="appid" column="appid" />
+				<result property="mchId" column="mch_id" />
+				<result property="body" column="body" />
+				<result property="outTradeNo" column="out_trade_no" />
+				<result property="totalFee" column="total_fee" />
+				<result property="spbillCreateIp" column="spbill_create_ip" />
+				<result property="openid" column="openid" />
+				<result property="status" column="status" />
+				<result property="cardId" column="card_id" />
+				<result property="customerName" column="customer_name" />
+				<result property="certificateNo" column="certificate_no" />
+				<result property="phoneCode" column="phone_code" />
+				<result property="deptCode" column="dept_code" />
+				<result property="deptName" column="dept_name" />
+				<result property="docterCode" column="docter_code" />
+				<result property="doctorName" column="doctor_name" />
+				<result property="deptPosition" column="dept_position" />
+				<result property="ct" column="ct" />
+				<result property="transactionId" column="transaction_id" />
+				<result property="outpatientNo" column="outpatient_no" />
+				<result property="serialNo" column="serial_no" />
+				<result property="indexNo" column="index_no" />
+				<result property="visitDate" column="visit_date" />
+	</resultMap>
+	
+	<sql id="columns">
+		id,order_no,prepay_id,appid,mch_id,body,out_trade_no,total_fee,spbill_create_ip,openid,status,card_id,customer_name,certificate_no,phone_code,dept_code,dept_name,docter_code,doctor_name,dept_position,ct,transaction_id,outpatient_no,serial_no,index_no,visit_date
+	</sql>
+	
+	<sql id="dynamicWhere">
+		<where>
+					<if test="@Ognl@isNotEmpty(id)"> AND id  LIKE '%${id}%'  </if>
+					<if test="@Ognl@isNotEmpty(orderNo)"> AND order_no  LIKE '%${orderNo}%'  </if>
+					<if test="@Ognl@isNotEmpty(prepayId)"> AND prepay_id  LIKE '%${prepayId}%'  </if>
+					<if test="@Ognl@isNotEmpty(appid)"> AND appid  LIKE '%${appid}%'  </if>
+					<if test="@Ognl@isNotEmpty(mchId)"> AND mch_id  LIKE '%${mchId}%'  </if>
+					<if test="@Ognl@isNotEmpty(body)"> AND body  LIKE '%${body}%'  </if>
+					<if test="@Ognl@isNotEmpty(outTradeNo)"> AND out_trade_no  = '${outTradeNo}'  </if>
+					<if test="@Ognl@isNotEmpty(totalFee)"> AND total_fee  =#{totalFee} </if>
+					<if test="@Ognl@isNotEmpty(spbillCreateIp)"> AND spbill_create_ip  LIKE '%${spbillCreateIp}%'  </if>
+					<if test="@Ognl@isNotEmpty(openid)"> AND openid  = '${openid}'  </if>
+					<if test="@Ognl@isNotEmpty(status)"> AND status  = '${status}'  </if>
+					<if test="@Ognl@isNotEmpty(cardId)"> AND card_id  LIKE '%${cardId}%'  </if>
+					<if test="@Ognl@isNotEmpty(customerName)"> AND customer_name  LIKE '%${customerName}%'  </if>
+					<if test="@Ognl@isNotEmpty(certificateNo)"> AND certificate_no  LIKE '%${certificateNo}%'  </if>
+					<if test="@Ognl@isNotEmpty(phoneCode)"> AND phone_code  LIKE '%${phoneCode}%'  </if>
+					<if test="@Ognl@isNotEmpty(deptCode)"> AND dept_code  LIKE '%${deptCode}%'  </if>
+					<if test="@Ognl@isNotEmpty(deptName)"> AND dept_name  LIKE '%${deptName}%'  </if>
+					<if test="@Ognl@isNotEmpty(docterCode)"> AND docter_code  LIKE '%${docterCode}%'  </if>
+					<if test="@Ognl@isNotEmpty(doctorName)"> AND doctor_name  LIKE '%${doctorName}%'  </if>
+					<if test="@Ognl@isNotEmpty(deptPosition)"> AND dept_position  LIKE '%${deptPosition}%'  </if>
+					<if test="@Ognl@isNotEmpty(ct)"> AND ct  =#{ct} </if>
+					<if test="@Ognl@isNotEmpty(transactionId)"> AND transaction_id  LIKE '%${transactionId}%'  </if>
+					<if test="@Ognl@isNotEmpty(outpatientNo)"> AND outpatient_no  LIKE '%${outpatientNo}%'  </if>
+					<if test="@Ognl@isNotEmpty(serialNo)"> AND serial_no  LIKE '%${serialNo}%'  </if>
+					<if test="@Ognl@isNotEmpty(indexNo)"> AND index_no  LIKE '%${indexNo}%'  </if>
+					<if test="@Ognl@isNotEmpty(visitDate)"> AND visit_date  LIKE '%${visitDate}%'  </if>
+		</where>
+	</sql>
+
+	<insert id="save" parameterType="com.chuangbu.core.orm.hospital.domain.RegisterOrder">
+		INSERT INTO t_register_order
+		(
+		<trim prefix="" suffixOverrides=",">  
+				<if test="@Ognl@isNotEmpty(id)">  id,  </if>
+				<if test="@Ognl@isNotEmpty(orderNo)">  order_no,  </if>
+				<if test="@Ognl@isNotEmpty(prepayId)">  prepay_id,  </if>
+				<if test="@Ognl@isNotEmpty(appid)">  appid,  </if>
+				<if test="@Ognl@isNotEmpty(mchId)">  mch_id,  </if>
+				<if test="@Ognl@isNotEmpty(body)">  body,  </if>
+				<if test="@Ognl@isNotEmpty(outTradeNo)">  out_trade_no,  </if>
+				<if test="@Ognl@isNotEmpty(totalFee)">  total_fee,  </if>
+				<if test="@Ognl@isNotEmpty(spbillCreateIp)">  spbill_create_ip,  </if>
+				<if test="@Ognl@isNotEmpty(openid)">  openid,  </if>
+				<if test="@Ognl@isNotEmpty(status)">  status,  </if>
+				<if test="@Ognl@isNotEmpty(cardId)">  card_id,  </if>
+				<if test="@Ognl@isNotEmpty(customerName)">  customer_name,  </if>
+				<if test="@Ognl@isNotEmpty(certificateNo)">  certificate_no,  </if>
+				<if test="@Ognl@isNotEmpty(phoneCode)">  phone_code,  </if>
+				<if test="@Ognl@isNotEmpty(deptCode)">  dept_code,  </if>
+				<if test="@Ognl@isNotEmpty(deptName)">  dept_name,  </if>
+				<if test="@Ognl@isNotEmpty(docterCode)">  docter_code,  </if>
+				<if test="@Ognl@isNotEmpty(doctorName)">  doctor_name,  </if>
+				<if test="@Ognl@isNotEmpty(deptPosition)">  dept_position,  </if>
+				<if test="@Ognl@isNotEmpty(ct)">  ct,  </if>
+				<if test="@Ognl@isNotEmpty(transactionId)">  transaction_id,  </if>
+				<if test="@Ognl@isNotEmpty(outpatientNo)">  outpatient_no,  </if>
+				<if test="@Ognl@isNotEmpty(serialNo)">  serial_no,  </if>
+				<if test="@Ognl@isNotEmpty(indexNo)">  index_no,  </if>
+				<if test="@Ognl@isNotEmpty(visitDate)">  visit_date </if>
+		</trim>
+		)
+		VALUES
+		(
+		<trim prefix="" suffixOverrides=",">  
+				<if test="@Ognl@isNotEmpty(id)"> #{id},  </if>
+				<if test="@Ognl@isNotEmpty(orderNo)"> #{orderNo},  </if>
+				<if test="@Ognl@isNotEmpty(prepayId)"> #{prepayId},  </if>
+				<if test="@Ognl@isNotEmpty(appid)"> #{appid},  </if>
+				<if test="@Ognl@isNotEmpty(mchId)"> #{mchId},  </if>
+				<if test="@Ognl@isNotEmpty(body)"> #{body},  </if>
+				<if test="@Ognl@isNotEmpty(outTradeNo)"> #{outTradeNo},  </if>
+				<if test="@Ognl@isNotEmpty(totalFee)"> #{totalFee},  </if>
+				<if test="@Ognl@isNotEmpty(spbillCreateIp)"> #{spbillCreateIp},  </if>
+				<if test="@Ognl@isNotEmpty(openid)"> #{openid},  </if>
+				<if test="@Ognl@isNotEmpty(status)"> #{status},  </if>
+				<if test="@Ognl@isNotEmpty(cardId)"> #{cardId},  </if>
+				<if test="@Ognl@isNotEmpty(customerName)"> #{customerName},  </if>
+				<if test="@Ognl@isNotEmpty(certificateNo)"> #{certificateNo},  </if>
+				<if test="@Ognl@isNotEmpty(phoneCode)"> #{phoneCode},  </if>
+				<if test="@Ognl@isNotEmpty(deptCode)"> #{deptCode},  </if>
+				<if test="@Ognl@isNotEmpty(deptName)"> #{deptName},  </if>
+				<if test="@Ognl@isNotEmpty(docterCode)"> #{docterCode},  </if>
+				<if test="@Ognl@isNotEmpty(doctorName)"> #{doctorName},  </if>
+				<if test="@Ognl@isNotEmpty(deptPosition)"> #{deptPosition},  </if>
+				<if test="@Ognl@isNotEmpty(ct)"> #{ct},  </if>
+				<if test="@Ognl@isNotEmpty(transactionId)"> #{transactionId},  </if>
+				<if test="@Ognl@isNotEmpty(outpatientNo)"> #{outpatientNo},  </if>
+				<if test="@Ognl@isNotEmpty(serialNo)"> #{serialNo},  </if>
+				<if test="@Ognl@isNotEmpty(indexNo)"> #{indexNo},  </if>
+				<if test="@Ognl@isNotEmpty(visitDate)"> #{visitDate} </if>
+		</trim>
+		)
+	</insert>
+	
+	<delete id="delete" parameterType="String">
+		DELETE FROM t_register_order 
+		WHERE 			id
+		=#{			id
+		}
+	</delete>
+	
+	<update id="update" parameterType="com.chuangbu.core.orm.hospital.domain.RegisterOrder">
+		UPDATE t_register_order 
+			<set>
+					<if test="@Ognl@isNotEmpty(orderNo)"> order_no=#{orderNo},  </if>
+					<if test="@Ognl@isNotEmpty(prepayId)"> prepay_id=#{prepayId},  </if>
+					<if test="@Ognl@isNotEmpty(appid)"> appid=#{appid},  </if>
+					<if test="@Ognl@isNotEmpty(mchId)"> mch_id=#{mchId},  </if>
+					<if test="@Ognl@isNotEmpty(body)"> body=#{body},  </if>
+					<if test="@Ognl@isNotEmpty(outTradeNo)"> out_trade_no=#{outTradeNo},  </if>
+					<if test="@Ognl@isNotEmpty(totalFee)"> total_fee=#{totalFee},  </if>
+					<if test="@Ognl@isNotEmpty(spbillCreateIp)"> spbill_create_ip=#{spbillCreateIp},  </if>
+					<if test="@Ognl@isNotEmpty(openid)"> openid=#{openid},  </if>
+					<if test="@Ognl@isNotEmpty(status)"> status=#{status},  </if>
+					<if test="@Ognl@isNotEmpty(cardId)"> card_id=#{cardId},  </if>
+					<if test="@Ognl@isNotEmpty(customerName)"> customer_name=#{customerName},  </if>
+					<if test="@Ognl@isNotEmpty(certificateNo)"> certificate_no=#{certificateNo},  </if>
+					<if test="@Ognl@isNotEmpty(phoneCode)"> phone_code=#{phoneCode},  </if>
+					<if test="@Ognl@isNotEmpty(deptCode)"> dept_code=#{deptCode},  </if>
+					<if test="@Ognl@isNotEmpty(deptName)"> dept_name=#{deptName},  </if>
+					<if test="@Ognl@isNotEmpty(docterCode)"> docter_code=#{docterCode},  </if>
+					<if test="@Ognl@isNotEmpty(doctorName)"> doctor_name=#{doctorName},  </if>
+					<if test="@Ognl@isNotEmpty(deptPosition)"> dept_position=#{deptPosition},  </if>
+					<if test="@Ognl@isNotEmpty(ct)"> ct=#{ct},  </if>
+					<if test="@Ognl@isNotEmpty(transactionId)"> transaction_id=#{transactionId},  </if>
+					<if test="@Ognl@isNotEmpty(outpatientNo)"> outpatient_no=#{outpatientNo},  </if>
+					<if test="@Ognl@isNotEmpty(serialNo)"> serial_no=#{serialNo},  </if>
+					<if test="@Ognl@isNotEmpty(indexNo)"> index_no=#{indexNo},  </if>
+					<if test="@Ognl@isNotEmpty(visitDate)"> visit_date=#{visitDate} </if>
+		    </set>
+		WHERE 			id
+		=#{id}
+	</update>
+	
+	<select id="findOne" parameterType="String" resultMap="Result">
+		SELECT <include refid="columns"/>
+		FROM t_register_order
+		WHERE 			id
+		=#{			id
+		}
+	</select>
+	
+	<select id="findAll" parameterType="String" resultMap="Result">
+		SELECT <include refid="columns"/>
+		FROM t_register_order
+		<if test="@Ognl@isNotEmpty(list)">
+		WHERE 			id
+		 IN
+		<foreach item="item" index="index" collection="list" open="(" separator="," close=")">  
+				#{item}
+		</foreach>
+		</if>
+	</select>
+	
+	<select id="find" parameterType="com.chuangbu.core.orm.hospital.domain.RegisterOrder" resultMap="Result">
+		SELECT <include refid="columns"/>
+		FROM t_register_order
+		<include refid="dynamicWhere"/>
+		<if test="@Ognl@isNotEmpty(orderByCT)"> order by ${orderByCT}  </if>
+	</select>
+	
+	<update id="updateByOutTradeNo" >
+		UPDATE t_register_order 
+			<set>
+					<if test="@Ognl@isNotEmpty(orderNo)"> order_no=#{orderNo},  </if>
+					<if test="@Ognl@isNotEmpty(prepayId)"> prepay_id=#{prepayId},  </if>
+					<if test="@Ognl@isNotEmpty(appid)"> appid=#{appid},  </if>
+					<if test="@Ognl@isNotEmpty(mchId)"> mch_id=#{mchId},  </if>
+					<if test="@Ognl@isNotEmpty(body)"> body=#{body},  </if>
+					<if test="@Ognl@isNotEmpty(outTradeNo)"> out_trade_no=#{outTradeNo},  </if>
+					<if test="@Ognl@isNotEmpty(totalFee)"> total_fee=#{totalFee},  </if>
+					<if test="@Ognl@isNotEmpty(spbillCreateIp)"> spbill_create_ip=#{spbillCreateIp},  </if>
+					<if test="@Ognl@isNotEmpty(openid)"> openid=#{openid},  </if>
+					<if test="@Ognl@isNotEmpty(status)"> status=#{status},  </if>
+					<if test="@Ognl@isNotEmpty(cardId)"> card_id=#{cardId},  </if>
+					<if test="@Ognl@isNotEmpty(customerName)"> customer_name=#{customerName},  </if>
+					<if test="@Ognl@isNotEmpty(certificateNo)"> certificate_no=#{certificateNo},  </if>
+					<if test="@Ognl@isNotEmpty(phoneCode)"> phone_code=#{phoneCode},  </if>
+					<if test="@Ognl@isNotEmpty(deptCode)"> dept_code=#{deptCode},  </if>
+					<if test="@Ognl@isNotEmpty(deptName)"> dept_name=#{deptName},  </if>
+					<if test="@Ognl@isNotEmpty(docterCode)"> docter_code=#{docterCode},  </if>
+					<if test="@Ognl@isNotEmpty(doctorName)"> doctor_name=#{doctorName},  </if>
+					<if test="@Ognl@isNotEmpty(deptPosition)"> dept_position=#{deptPosition},  </if>
+					<if test="@Ognl@isNotEmpty(ct)"> ct=#{ct},  </if>
+					<if test="@Ognl@isNotEmpty(transactionId)"> transaction_id=#{transactionId},  </if>
+					<if test="@Ognl@isNotEmpty(outpatientNo)"> outpatient_no=#{outpatientNo},  </if>
+					<if test="@Ognl@isNotEmpty(serialNo)"> serial_no=#{serialNo},  </if>
+					<if test="@Ognl@isNotEmpty(indexNo)"> index_no=#{indexNo},  </if>
+					<if test="@Ognl@isNotEmpty(visitDate)"> visit_date=#{visitDate} </if>
+		    </set>					
+		WHERE out_trade_no=#{outTradeNo}
+		<if test="@Ognl@isNotEmpty(appid)"> and appid=#{appid}  </if>
+	</update>
+	
+	<select id="findByOpenIdAndDayCount" parameterType="com.chuangbu.core.orm.hospital.domain.RegisterOrder" resultType="Integer">
+		SELECT count(1) cout
+		FROM t_register_order t
+		where t.openid = #{openid}
+		and t.appid = #{appid}
+		and t.status = #{status}
+		and t.ct >= CURRENT_DATE()
+	</select>
+</mapper>

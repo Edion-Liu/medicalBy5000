@@ -1,0 +1,115 @@
+body {
+	padding-top:40px;
+	padding-bottom: 40px;
+	margin-left:200px;
+	-webkit-transition: margin 500ms ease;
+	-moz-transition: margin 500ms ease;
+	-ms-transition: margin 500ms ease;
+	-o-transition: margin 500ms ease;
+	transition: margin 500ms ease;
+}
+.navbar-layoutit .navbar-brand {
+    width: 180px;
+    color: #fff;
+    padding: 0;
+    margin: 5px 5px;
+}
+
+.navbar-fixed-top {
+    height: 25px;
+}
+.navbar-layoutit {
+    min-height: 32px;
+    padding: 5px;
+}
+.navbar-layoutit {
+    min-height: 45px;
+    padding: 5px;
+}
+.navbar-brand {
+    height: 25px;
+}
+.navbar-layoutit .navbar-brand img {float:left; margin:2px 10px 0 0; }
+.navbar-inverse {
+    background-color: #438EB9;
+    border-color: #6c85e6;
+}
+.navbar-layoutit span{
+	color: #fff;
+	font-size: 16px;
+} 
+.nav-user-photo {
+    margin: -4px 8px 0 0;
+    border-radius: 100%;
+    border: 2px solid #FFF;
+    max-width: 40px;
+}
+.user-info {
+    max-width: 100px;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: left;
+    vertical-align: top;
+    line-height: 15px;
+    position: relative;
+    top: 6px;
+}
+.user-info small {
+    display: block;
+    font-size: 13px;
+}
+.das-nav {
+    height: 100%;
+    margin: -5px !important;
+}
+.das-nav>li {
+    line-height: 45px;
+    height: 45px;
+    border-left: 1px solid #DDD;
+    padding: 0;
+    position: relative;
+    float: left!important;
+}
+.das-nav li:last-child a [class^="icon-"] {
+    display: inline-block;
+    width: 1.25em;
+    text-align: center;
+}
+.das-nav>li.open>a {
+    color: #FFF!important;
+}
+.das-nav>li>a {
+    background-color: #579EC8;
+    color: #FFF;
+    display: block;
+    line-height: inherit;
+    text-align: center;
+    height: 100%;
+    width: auto;
+    min-width: 50px;
+    padding: 0 8px;
+    position: relative;
+}
+.das-nav .glyphicon{
+	color: white;
+}
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+    color: #fff;
+    background-color: #579EC8;
+}
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
+    color: #fff;
+    background-color: #579EC8;
+}
+.navbar-inverse .nav li.dropdown.open > .dropdown-toggle, .navbar-inverse .nav li.dropdown.active > .dropdown-toggle, .navbar-inverse .nav li.dropdown.open.active > .dropdown-toggle {
+    color: #fff;
+    background-color: #579EC8;
+}
+.navbar .nav > li > a {
+    float: none;
+    padding: 0px 13px 0px;
+    color: #777;
+    text-decoration: none;
+}

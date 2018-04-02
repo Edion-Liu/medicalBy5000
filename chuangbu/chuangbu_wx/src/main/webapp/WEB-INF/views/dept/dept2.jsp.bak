@@ -1,0 +1,159 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java"  pageEncoding="UTF-8"  %>
+<%@ include file="./../../commons/taglibs.jsp"%>
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>科室简介</title>
+</head>
+<body ontouchstart>
+	<div class="container" id="container">
+		<div class="page  js_show" >
+			 <div class="weui-cells">
+	            <div class="weui-cell weui-cell_access" onClick="openUrl('${basepath}','/dept/nk-xxg')">
+	                <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+	                    <img src="./../../img/dept/nk-xxg.png" style="width: 50px;display: block"/>
+	                </div>
+	                <div class="weui-cell__bd">
+	                    <p>心血管内科(内一科)</p>
+	                    <p style="font-size: 13px;color: #FF0000;">旗级重点专科</p>
+	                </div>
+	                <div class="weui-cell__ft"></div>
+	            </div>
+	            <div class="weui-cell weui-cell_access" onClick="openUrl('${basepath}','/dept/nk-sj')">
+	                <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+	                    <img src="./../../img/dept/nk-sj.png" style="width: 50px;display: block"/>
+	                </div>
+	                <div class="weui-cell__bd">
+	                    <p>神经内科(内二科)</p>
+	                    <p style="font-size: 13px;color: #FF0000;">旗级重点专科</p>
+	                </div>
+	                <div class="weui-cell__ft"></div>
+	            </div>
+	            <div class="weui-cell weui-cell_access" onClick="openUrl('${basepath}','/dept/wk-pw')">
+	                <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+	                    <img src="./../../img/dept/wk-pw.png" style="width: 50px;display: block"/>
+	                </div>
+	                <div class="weui-cell__bd">
+	                    <p>普通外科(外一科)</p>
+	                    <p style="font-size: 13px;color: #FF0000;">旗级重点专科</p>
+	                </div>
+	                <div class="weui-cell__ft"></div>
+	            </div>
+	            <div class="weui-cell weui-cell_access" onClick="openUrl('${basepath}','/dept/wk-gw')">
+	                <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+	                    <img src="./../../img/dept/wk-gw.png" style="width: 50px;display: block"/>
+	                </div>
+	                <div class="weui-cell__bd">
+	                    <p>骨外科(外二科)</p>
+	                    <p style="font-size: 13px;color: #FF0000;">旗级重点专科</p>
+	                </div>
+	                <div class="weui-cell__ft"></div>
+	            </div>
+	            <div class="weui-cell weui-cell_access" onClick="openUrl('${basepath}','/dept/zzyxk')">
+	                <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+	                    <img src="./../../img/dept/zzyxk.png" style="width: 50px;display: block"/>
+	                </div>
+	                <div class="weui-cell__bd">
+	                    <p>重症医学科</p>
+	                    <p style="font-size: 13px;color: #888888;">医院重症医学科信息</p>
+	                </div>
+	                <div class="weui-cell__ft"></div>
+	            </div>
+				<div class="weui-cell weui-cell_access" onClick="openUrl('${basepath}','/dept/fck')">
+	                <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+	                    <img src="./../../img/dept/fk.png" style="width: 50px;display: block"/>
+	                </div>
+	                <div class="weui-cell__bd">
+	                    <p>妇产科</p>
+	                    <p style="font-size: 13px;color: #888888;">医院妇产科信息</p>
+	                </div>
+	                <div class="weui-cell__ft"></div>
+	            </div>
+	            <!--div class="weui-cell weui-cell_access" onClick="openUrl('${basepath}','/dept/fk')">
+	                <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+	                    <img src="./../../img/dept/fk.png" style="width: 50px;display: block"/>
+	                </div>
+	                <div class="weui-cell__bd">
+	                    <p>妇科</p>
+	                    <p style="font-size: 13px;color: #888888;">医院妇科信息</p>
+	                </div>
+	                <div class="weui-cell__ft"></div>
+	            </div>
+	            <div class="weui-cell weui-cell_access" onClick="openUrl('${basepath}','/dept/ck')">
+	                <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+	                    <img src="./../../img/dept/ck.png" style="width: 50px;display: block"/>
+	                </div>
+	                <div class="weui-cell__bd">
+	                    <p>产科</p>
+	                    <p style="font-size: 13px;color: #888888;">医院产科信息</p>
+	                </div>
+	                <div class="weui-cell__ft"></div>
+	            </div-->
+	            <div class="weui-cell weui-cell_access" onClick="newopenUrl('http://h5.eqxiu.com/s/ernacRbL?from=singlemessage')">
+	                <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+	                    <img src="./../../img/dept/ek.png" style="width: 50px;display: block"/>
+	                </div>
+	                <div class="weui-cell__bd">
+	                    <p>儿科</p>
+	                    <p style="font-size: 13px;color: #FF0000;">市级重点专科</p>
+	                </div>
+	                <div class="weui-cell__ft"></div>
+	            </div>
+	            <div class="weui-cell weui-cell_access" onClick="openUrl('${basepath}','/dept/yj-jyk')">
+	                <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+	                    <img src="./../../img/dept/yj-jyk.png" style="width: 50px;display: block"/>
+	                </div>
+	                <div class="weui-cell__bd">
+	                    <p>检验科</p>
+	                    <p style="font-size: 13px;color: #888888;">市级重点专科</p>
+	                </div>
+	                <div class="weui-cell__ft"></div>
+	            </div>
+	            <div class="weui-cell weui-cell_access" onClick="openUrl('${basepath}','/dept/yj-yxzx')">
+	                <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+	                    <img src="./../../img/dept/yj-yxzx.png" style="width: 50px;display: block"/>
+	                </div>
+	                <div class="weui-cell__bd">
+	                    <p>影像中心</p>
+	                    <p style="font-size: 13px;color: #888888;">医院影像中心信息</p>
+	                </div>
+	                <div class="weui-cell__ft"></div>
+	            </div>
+	            <div class="weui-cell weui-cell_access" onClick="openUrl('${basepath}','/dept/yj-css')">
+	                <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+	                    <img src="./../../img/dept/yj-css.png" style="width: 50px;display: block"/>
+	                </div>
+	                <div class="weui-cell__bd">
+	                    <p>超声室</p>
+	                    <p style="font-size: 13px;color: #888888;">医院超声室信息</p>
+	                </div>
+	                <div class="weui-cell__ft"></div>
+	            </div>
+	            <div class="weui-cell weui-cell_access" onClick="openUrl('${basepath}','/dept/yj-wjs')">
+	                <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+	                    <img src="./../../img/dept/yj-wjs.png" style="width: 50px;display: block"/>
+	                </div>
+	                <div class="weui-cell__bd">
+	                    <p>胃镜室</p>
+	                    <p style="font-size: 13px;color: #888888;">医院胃镜室信息</p>
+	                </div>
+	                <div class="weui-cell__ft"></div>
+	            </div>
+	        </div>
+	                
+	        </article>
+	    	
+		</div>
+	</div>
+    
+<script type="text/javascript">
+    window.onload=function(){ }
+	function newopenUrl(url){
+		location.href = url;
+	}
+</script>
+
+</body>
+</html>

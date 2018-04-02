@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+<mapper namespace="com.chuangbu.core.orm.sys.mapper.SsRoleMapper">
+
+	<resultMap id="Result" type="com.chuangbu.core.orm.sys.domain.SsRole">
+				<id property="id" column="id" />
+				<result property="name" column="name" />
+				<result property="note" column="note" />
+	</resultMap>
+	
+	<sql id="columns">
+		id,name,note
+	</sql>
+	
+	<sql id="dynamicWhere">
+		<where>
+					<if test="@Ognl@isNotEmpty(id)"> AND id  LIKE '%${id}%'  </if>
+					<if test="@Ognl@isNotEmpty(name)"> AND name  LIKE '%${name}%'  </if>
+					<if test="@Ognl@isNotEmpty(note)"> AND note  LIKE '%${note}%'  </if>
+		</where>
+	</sql>
+
+	<insert id="save" parameterType="com.chuangbu.core.orm.sys.domain.SsRole">
+		INSERT INTO ss_role
+		(
+		<trim prefix="" suffixOverrides=",">  
+				<if test="@Ognl@isNotEmpty(id)">  id,  </if>
+				<if test="@Ognl@isNotEmpty(name)">  name,  </if>
+				<if test="@Ognl@isNotEmpty(note)">  note </if>
+		</trim>
+		)
+		VALUES
+		(
+		<trim prefix="" suffixOverrides=",">  
+				<if test="@Ognl@isNotEmpty(id)"> #{id},  </if>
+				<if test="@Ognl@isNotEmpty(name)"> #{name},  </if>
+				<if test="@Ognl@isNotEmpty(note)"> #{note} </if>
+		</trim>
+		)
+	</insert>
+	
+	<delete id="delete" parameterType="String">
+		DELETE FROM ss_role 
+		WHERE 			id
+		=#{			id
+		}
+	</delete>
+	
+	<update id="update" parameterType="com.chuangbu.core.orm.sys.domain.SsRole">
+		UPDATE ss_role 
+			<set>
+					<if test="@Ognl@isNotEmpty(name)"> name=#{name},  </if>
+					<if test="@Ognl@isNotEmpty(note)"> note=#{note} </if>
+		    </set>
+		WHERE 			id
+		=#{id}
+	</update>
+	
+	<select id="findOne" parameterType="String" resultMap="Result">
+		SELECT <include refid="columns"/>
+		FROM ss_role
+		WHERE 			id
+		=#{			id
+		}
+	</select>
+	
+	<select id="findAll" parameterType="String" resultMap="Result">
+		SELECT <include refid="columns"/>
+		FROM ss_role
+		<if test="@Ognl@isNotEmpty(list)">
+		WHERE 			id
+		 IN
+		<foreach item="item" index="index" collection="list" open="(" separator="," close=")">  
+				#{item}
+		</foreach>
+		</if>
+	</select>
+	
+	<select id="find" parameterType="com.chuangbu.core.orm.sys.domain.SsRole" resultMap="Result">
+		SELECT <include refid="columns"/>
+		FROM ss_role
+		<include refid="dynamicWhere"/>
+	</select>
+</mapper>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+<mapper namespace="com.chuangbu.core.orm.sys.mapper.SysOrganizationMapper">
+
+	<resultMap id="Result" type="com.chuangbu.core.orm.sys.domain.SysOrganization">
+				<id property="id" column="id" />
+				<result property="expanded" column="expanded_" />
+				<result property="leaf" column="leaf_" />
+				<result property="level" column="level_" />
+				<result property="loaded" column="loaded_" />
+				<result property="order" column="order_" />
+				<result property="code" column="code" />
+				<result property="name" column="name" />
+				<result property="parent" column="parent_" />
+	</resultMap>
+	
+	<sql id="columns">
+		id,expanded_,leaf_,level_,loaded_,order_,code,name,parent_
+	</sql>
+	
+	<sql id="dynamicWhere">
+		<where>
+					<if test="@Ognl@isNotEmpty(id)"> AND id =#{id}   </if>
+					<if test="@Ognl@isNotEmpty(expanded)"> AND expanded_  =#{expanded} </if>
+					<if test="@Ognl@isNotEmpty(leaf)"> AND leaf_  =#{leaf} </if>
+					<if test="@Ognl@isNotEmpty(level)"> AND level_  =#{level} </if>
+					<if test="@Ognl@isNotEmpty(loaded)"> AND loaded_  =#{loaded} </if>
+					<if test="@Ognl@isNotEmpty(order)"> AND order_  =#{order} </if>
+					<if test="@Ognl@isNotEmpty(code)"> AND code  =#{code}  </if>
+					<if test="@Ognl@isNotEmpty(name)"> AND name   LIKE '%${name}%'  </if>
+					<if test="@Ognl@isNotEmpty(parent)"> AND parent_   =#{parent}  </if>
+		</where>
+	</sql>
+
+	<insert id="save" parameterType="com.chuangbu.core.orm.sys.domain.SysOrganization">
+		INSERT INTO sys_organization
+		(
+		<trim prefix="" suffixOverrides=",">  
+				<if test="@Ognl@isNotEmpty(id)">  id,  </if>
+				<if test="@Ognl@isNotEmpty(expanded)">  expanded_,  </if>
+				<if test="@Ognl@isNotEmpty(leaf)">  leaf_,  </if>
+				<if test="@Ognl@isNotEmpty(level)">  level_,  </if>
+				<if test="@Ognl@isNotEmpty(loaded)">  loaded_,  </if>
+				<if test="@Ognl@isNotEmpty(order)">  order_,  </if>
+				<if test="@Ognl@isNotEmpty(code)">  code,  </if>
+				<if test="@Ognl@isNotEmpty(name)">  name,  </if>
+				<if test="@Ognl@isNotEmpty(parent)">  parent_ </if>
+		</trim>
+		)
+		VALUES
+		(
+		<trim prefix="" suffixOverrides=",">  
+				<if test="@Ognl@isNotEmpty(id)"> #{id},  </if>
+				<if test="@Ognl@isNotEmpty(expanded)"> #{expanded},  </if>
+				<if test="@Ognl@isNotEmpty(leaf)"> #{leaf},  </if>
+				<if test="@Ognl@isNotEmpty(level)"> #{level},  </if>
+				<if test="@Ognl@isNotEmpty(loaded)"> #{loaded},  </if>
+				<if test="@Ognl@isNotEmpty(order)"> #{order},  </if>
+				<if test="@Ognl@isNotEmpty(code)"> #{code},  </if>
+				<if test="@Ognl@isNotEmpty(name)"> #{name},  </if>
+				<if test="@Ognl@isNotEmpty(parent)"> #{parent} </if>
+		</trim>
+		)
+	</insert>
+	
+	<delete id="delete" parameterType="String">
+		DELETE FROM sys_organization 
+		WHERE 			id
+		=#{			id
+		}
+	</delete>
+	
+	<update id="update" parameterType="com.chuangbu.core.orm.sys.domain.SysOrganization">
+		UPDATE sys_organization 
+			<set>
+					<if test="@Ognl@isNotEmpty(expanded)"> expanded_=#{expanded},  </if>
+					<if test="@Ognl@isNotEmpty(leaf)"> leaf_=#{leaf},  </if>
+					<if test="@Ognl@isNotEmpty(level)"> level_=#{level},  </if>
+					<if test="@Ognl@isNotEmpty(loaded)"> loaded_=#{loaded},  </if>
+					<if test="@Ognl@isNotEmpty(order)"> order_=#{order},  </if>
+					<if test="@Ognl@isNotEmpty(code)"> code=#{code},  </if>
+					<if test="@Ognl@isNotEmpty(name)"> name=#{name},  </if>
+					<if test="@Ognl@isNotEmpty(parent)"> parent_=#{parent} </if>
+		    </set>
+		WHERE 			id
+		=#{id}
+	</update>
+	
+	<select id="findOne" parameterType="String" resultMap="Result">
+		SELECT <include refid="columns"/>
+		FROM sys_organization
+		WHERE 			id
+		=#{			id
+		}
+	</select>
+	
+	<select id="findAll" parameterType="String" resultMap="Result">
+		SELECT <include refid="columns"/>
+		FROM sys_organization
+		<if test="@Ognl@isNotEmpty(list)">
+		WHERE 			id
+		 IN
+		<foreach item="item" index="index" collection="list" open="(" separator="," close=")">  
+				#{item}
+		</foreach>
+		</if>
+	</select>
+	
+	<select id="find" parameterType="com.chuangbu.core.orm.sys.domain.SysOrganization" resultMap="Result">
+		SELECT <include refid="columns"/>
+		FROM sys_organization
+		<include refid="dynamicWhere"/>
+	</select>
+</mapper>

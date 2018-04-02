@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="gbk" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:noNamespaceSchemaLocation="codegen.xsd">
+
+	<properties>
+		<property name="company" value="suixingpay"></property>
+		<property name="project" value="rims"></property>
+		<property name="module" value="cfca"></property>
+		<property name="developer" value="xjc"></property>
+	</properties>
+
+	<!-- 数据库配置 -->
+	<database>
+		<dbHelperClass>com.suixingpay.cgm.db.impl.OracleHelper</dbHelperClass>
+		<url>jdbc:oracle:thin:@172.16.135.251:1521:BAP</url>
+		<username>rcs</username>
+		<password>rcs_sit</password>
+	</database>
+
+	<!--  这里配置所用到的表 ，表之间用逗号分隔 -->
+	<table tableName="t_rcs_cfca_transaction" >
+		<variable name="class" value="TRcsCfcaTransaction"/>
+	</table>
+
+	<!--  配置文件在本地磁盘中的位置，绝对路径 -->
+	<templates basepath="E:\GitWorkspaces\rcs-micro\app\rims\rims-codegen\src\main\resources\template">
+		<template id="po" path="po.ftl" />
+		<template id="domain" path="domain.ftl" />
+		<template id="mapper" path="mapper.ftl" />
+		<template id="mapper-xml" path="mapper-xml.ftl" />
+		<template id="service" path="service.ftl" />
+	</templates>
+
+	<!--  生成文件所放置的位置，绝对路径 -->
+	<files baseDir="E:\GitWorkspaces\rcs-micro\app\rims" >
+		<file refTemplate="po" override="true" filename="{class}Po.java" dir="rims-core\src\main\java\com\{company}\{project}\core\orm\{module}\po" />
+		<file refTemplate="domain" override="true" filename="{class}.java" dir="rims-core\src\main\java\com\{company}\{project}\core\orm\{module}\domain" />
+<!-- 		<file refTemplate="mapper" override="true" filename="{class}Mapper.java" dir="rims-core\src\main\java\com\{company}\{project}\core\orm\{module}\mapper" /> -->
+		<file refTemplate="mapper-xml" override="true" filename="{class}Mapper.xml" dir="rims-core\src\main\resources\com\{company}\{project}\core\orm\{module}\mapper" />
+<!-- 		<file refTemplate="service" override="true" filename="{class}Service.java" dir="rims-core\src\main\java\com\{company}\{project}\core\service\{module}" /> -->
+	</files>
+
+</config>

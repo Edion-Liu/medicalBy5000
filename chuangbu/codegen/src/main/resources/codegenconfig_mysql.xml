@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="gbk" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:noNamespaceSchemaLocation="codegen.xsd">
+
+	<properties>
+		<property name="company" value="chuangbu"></property>
+		<property name="project" value="core"></property>
+		<property name="module" value="hospital"></property>
+		<property name="developer" value="xjc"></property>
+	</properties>
+
+	<!-- 数据库配置 -->
+	<database>
+		<dbHelperClass>com.chuangbu.cgm.db.impl.MySqlHelper</dbHelperClass>
+		<url><![CDATA[jdbc:mysql://127.0.0.1:3306/chuangbu?useUnicode=true&characterEncoding=utf-8]]></url>
+		<username>root</username>
+		<password>686449</password>
+	</database>
+
+	<!--  这里配置所用到的表 ，表之间用逗号分隔 -->
+	<table tableName="t_outpatient_order" >
+		<variable name="class" value="OutpatientOrder"/>
+	</table>
+
+	<!--  配置文件在本地磁盘中的位置，绝对路径 -->
+	<templates basepath="D:\Workspaces\chuangbu\codegen\src\main\resources\template">
+		<template id="po" path="po.ftl" />
+		<template id="domain" path="domain.ftl" />
+		<template id="mapper" path="mapper.ftl" />
+		<template id="mapper-xml" path="mapper-xml.ftl" />
+		<template id="service" path="service.ftl" />
+	</templates>
+
+	<!--  生成文件所放置的位置，绝对路径 -->
+	<files baseDir="D:\Workspaces\chuangbu" >
+		<file refTemplate="po" override="true" filename="{class}Po.java" dir="chuangbu_core\src\main\java\com\{company}\{project}\orm\{module}\po" />
+		<file refTemplate="domain" override="true" filename="{class}.java" dir="chuangbu_core\src\main\java\com\{company}\{project}\orm\{module}\domain" />
+<!-- 		<file refTemplate="mapper" override="true" filename="{class}Mapper.java" dir="chuangbu_core\src\main\java\com\{company}\{project}\orm\{module}\mapper" /> -->
+		<file refTemplate="mapper-xml" override="true" filename="{class}Mapper.xml" dir="chuangbu_core\src\main\resources\com\{company}\{project}\orm\{module}\mapper" />
+<!-- 		<file refTemplate="service" override="true" filename="{class}Service.java" dir="chuangbu_core\src\main\java\com\{company}\{project}\service\{module}" /> -->
+	</files>
+
+</config>

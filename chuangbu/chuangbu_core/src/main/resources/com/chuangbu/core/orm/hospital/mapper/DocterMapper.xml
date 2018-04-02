@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+<mapper namespace="com.chuangbu.core.orm.hospital.mapper.DocterMapper">
+
+	<resultMap id="Result" type="com.chuangbu.core.orm.hospital.domain.Docter">
+				<id property="id" column="id" />
+				<result property="name" column="name" />
+				<result property="title" column="title" />
+				<result property="position" column="position" />
+				<result property="age" column="age" />
+				<result property="sex" column="sex" />
+				<result property="photoPath" column="photo_path" />
+				<result property="tel" column="tel" />
+				<result property="level" column="level" />
+				<result property="remark" column="remark" />
+				<result property="orgId" column="org_id" />
+				<result property="unit" column="unit" />
+	</resultMap>
+	
+	<sql id="columns">
+		id,name,title,position,age,sex,photo_path,tel,level,remark,org_id,unit
+	</sql>
+	
+	<sql id="dynamicWhere">
+		<where>
+					<if test="@Ognl@isNotEmpty(id)"> AND id  LIKE '%${id}%'  </if>
+					<if test="@Ognl@isNotEmpty(name)"> AND name  LIKE '%${name}%'  </if>
+					<if test="@Ognl@isNotEmpty(title)"> AND title  LIKE '%${title}%'  </if>
+					<if test="@Ognl@isNotEmpty(position)"> AND position  LIKE '%${position}%'  </if>
+					<if test="@Ognl@isNotEmpty(age)"> AND age  =#{age} </if>
+					<if test="@Ognl@isNotEmpty(sex)"> AND sex  LIKE '%${sex}%'  </if>
+					<if test="@Ognl@isNotEmpty(photoPath)"> AND photo_path  LIKE '%${photoPath}%'  </if>
+					<if test="@Ognl@isNotEmpty(tel)"> AND tel  LIKE '%${tel}%'  </if>
+					<if test="@Ognl@isNotEmpty(level)"> AND level  =#{level} </if>
+					<if test="@Ognl@isNotEmpty(remark)"> AND remark  LIKE '%${remark}%'  </if>
+					<if test="@Ognl@isNotEmpty(orgId)"> AND org_id  LIKE '%${orgId}%'  </if>
+					<if test="@Ognl@isNotEmpty(unit)"> AND unit  LIKE '%${unit}%'  </if>
+		</where>
+	</sql>
+
+	<insert id="save" parameterType="com.chuangbu.core.orm.hospital.domain.Docter">
+		INSERT INTO t_docter
+		(
+		<trim prefix="" suffixOverrides=",">  
+				<if test="@Ognl@isNotEmpty(id)">  id,  </if>
+				<if test="@Ognl@isNotEmpty(name)">  name,  </if>
+				<if test="@Ognl@isNotEmpty(title)">  title,  </if>
+				<if test="@Ognl@isNotEmpty(position)">  position,  </if>
+				<if test="@Ognl@isNotEmpty(age)">  age,  </if>
+				<if test="@Ognl@isNotEmpty(sex)">  sex,  </if>
+				<if test="@Ognl@isNotEmpty(photoPath)">  photo_path,  </if>
+				<if test="@Ognl@isNotEmpty(tel)">  tel,  </if>
+				<if test="@Ognl@isNotEmpty(level)">  level,  </if>
+				<if test="@Ognl@isNotEmpty(remark)">  remark,  </if>
+				<if test="@Ognl@isNotEmpty(orgId)">  org_id,  </if>
+				<if test="@Ognl@isNotEmpty(unit)">  unit </if>
+		</trim>
+		)
+		VALUES
+		(
+		<trim prefix="" suffixOverrides=",">  
+				<if test="@Ognl@isNotEmpty(id)"> #{id},  </if>
+				<if test="@Ognl@isNotEmpty(name)"> #{name},  </if>
+				<if test="@Ognl@isNotEmpty(title)"> #{title},  </if>
+				<if test="@Ognl@isNotEmpty(position)"> #{position},  </if>
+				<if test="@Ognl@isNotEmpty(age)"> #{age},  </if>
+				<if test="@Ognl@isNotEmpty(sex)"> #{sex},  </if>
+				<if test="@Ognl@isNotEmpty(photoPath)"> #{photoPath},  </if>
+				<if test="@Ognl@isNotEmpty(tel)"> #{tel},  </if>
+				<if test="@Ognl@isNotEmpty(level)"> #{level},  </if>
+				<if test="@Ognl@isNotEmpty(remark)"> #{remark},  </if>
+				<if test="@Ognl@isNotEmpty(orgId)"> #{orgId},  </if>
+				<if test="@Ognl@isNotEmpty(unit)"> #{unit} </if>
+		</trim>
+		)
+	</insert>
+	
+	<delete id="delete" parameterType="String">
+		DELETE FROM t_docter 
+		WHERE 			id
+		=#{			id
+		}
+	</delete>
+	
+	<update id="update" parameterType="com.chuangbu.core.orm.hospital.domain.Docter">
+		UPDATE t_docter 
+			<set>
+					<if test="@Ognl@isNotEmpty(name)"> name=#{name},  </if>
+					<if test="@Ognl@isNotEmpty(title)"> title=#{title},  </if>
+					<if test="@Ognl@isNotEmpty(position)"> position=#{position},  </if>
+					<if test="@Ognl@isNotEmpty(age)"> age=#{age},  </if>
+					<if test="@Ognl@isNotEmpty(sex)"> sex=#{sex},  </if>
+					<if test="@Ognl@isNotEmpty(photoPath)"> photo_path=#{photoPath},  </if>
+					<if test="@Ognl@isNotEmpty(tel)"> tel=#{tel},  </if>
+					<if test="@Ognl@isNotEmpty(level)"> level=#{level},  </if>
+					<if test="@Ognl@isNotEmpty(remark)"> remark=#{remark},  </if>
+					<if test="@Ognl@isNotEmpty(orgId)"> org_id=#{orgId},  </if>
+					<if test="@Ognl@isNotEmpty(unit)"> unit=#{unit} </if>
+		    </set>
+		WHERE 			id
+		=#{id}
+	</update>
+	
+	<select id="findOne" parameterType="String" resultMap="Result">
+		SELECT <include refid="columns"/>
+		FROM t_docter
+		WHERE 			id
+		=#{			id
+		}
+	</select>
+	
+	<select id="findAll" parameterType="String" resultMap="Result">
+		SELECT <include refid="columns"/>
+		FROM t_docter
+		<if test="@Ognl@isNotEmpty(list)">
+		WHERE 			id
+		 IN
+		<foreach item="item" index="index" collection="list" open="(" separator="," close=")">  
+				#{item}
+		</foreach>
+		</if>
+	</select>
+	
+	<select id="find" parameterType="com.chuangbu.core.orm.hospital.domain.Docter" resultMap="Result">
+		SELECT <include refid="columns"/>
+		FROM t_docter
+		<include refid="dynamicWhere"/>
+	</select>
+</mapper>

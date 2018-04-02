@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+<mapper namespace="com.chuangbu.core.orm.hospital.mapper.TOrgMenuMapper">
+
+	<resultMap id="Result" type="com.chuangbu.core.orm.hospital.domain.TOrgMenu">
+				<id property="id" column="id" />
+				<result property="menuName" column="menu_name" />
+				<result property="menuCode" column="menu_code" />
+				<result property="menuUrl" column="menu_url" />
+				<result property="icoPath" column="ico_path" />
+				<result property="level" column="level" />
+				<result property="disOrder" column="dis_order" />
+				<result property="parent" column="parent" />
+				<result property="children" column="children" />
+				<result property="valid" column="valid" />
+				<result property="orgId" column="org_id" />
+				<result property="menuType" column="menu_type" />
+	</resultMap>
+	
+	<sql id="columns">
+		id,menu_name,menu_code,menu_url,ico_path,level,dis_order,parent,children,valid,org_id,menu_type
+	</sql>
+	
+	<sql id="dynamicWhere">
+		<where>
+					<if test="@Ognl@isNotEmpty(id)"> AND id  = #{id}  </if>
+					<if test="@Ognl@isNotEmpty(menuName)"> AND menu_name  LIKE '%${menuName}%'  </if>
+					<if test="@Ognl@isNotEmpty(menuCode)"> AND menu_code  LIKE '%${menuCode}%'  </if>
+					<if test="@Ognl@isNotEmpty(menuUrl)"> AND menu_url  LIKE '%${menuUrl}%'  </if>
+					<if test="@Ognl@isNotEmpty(icoPath)"> AND ico_path  LIKE '%${icoPath}%'  </if>
+					<if test="@Ognl@isNotEmpty(level)"> AND level  =#{level} </if>
+					<if test="@Ognl@isNotEmpty(disOrder)"> AND dis_order  =#{disOrder} </if>
+					<if test="@Ognl@isNotEmpty(parent)"> AND parent  = #{parent}  </if>
+					<if test="@Ognl@isNotEmpty(children)"> AND children  =#{children} </if>
+					<if test="@Ognl@isNotEmpty(valid)"> AND valid  =#{valid} </if>
+					<if test="@Ognl@isNotEmpty(orgId)"> AND org_id  = #{orgId}  </if>
+					<if test="@Ognl@isNotEmpty(menuType)"> AND menu_type  = #{menuType}  </if>
+		</where>
+	</sql>
+
+	<insert id="save" parameterType="com.chuangbu.core.orm.hospital.domain.TOrgMenu">
+		INSERT INTO t_org_menu
+		(
+		<trim prefix="" suffixOverrides=",">  
+				<if test="@Ognl@isNotEmpty(id)">  id,  </if>
+				<if test="@Ognl@isNotEmpty(menuName)">  menu_name,  </if>
+				<if test="@Ognl@isNotEmpty(menuCode)">  menu_code,  </if>
+				<if test="@Ognl@isNotEmpty(menuUrl)">  menu_url,  </if>
+				<if test="@Ognl@isNotEmpty(icoPath)">  ico_path,  </if>
+				<if test="@Ognl@isNotEmpty(level)">  level,  </if>
+				<if test="@Ognl@isNotEmpty(disOrder)">  dis_order,  </if>
+				<if test="@Ognl@isNotEmpty(parent)">  parent,  </if>
+				<if test="@Ognl@isNotEmpty(children)">  children,  </if>
+				<if test="@Ognl@isNotEmpty(valid)">  valid,  </if>
+				<if test="@Ognl@isNotEmpty(orgId)">  org_id,  </if>
+				<if test="@Ognl@isNotEmpty(menuType)">  menu_type </if>
+		</trim>
+		)
+		VALUES
+		(
+		<trim prefix="" suffixOverrides=",">  
+				<if test="@Ognl@isNotEmpty(id)"> #{id},  </if>
+				<if test="@Ognl@isNotEmpty(menuName)"> #{menuName},  </if>
+				<if test="@Ognl@isNotEmpty(menuCode)"> #{menuCode},  </if>
+				<if test="@Ognl@isNotEmpty(menuUrl)"> #{menuUrl},  </if>
+				<if test="@Ognl@isNotEmpty(icoPath)"> #{icoPath},  </if>
+				<if test="@Ognl@isNotEmpty(level)"> #{level},  </if>
+				<if test="@Ognl@isNotEmpty(disOrder)"> #{disOrder},  </if>
+				<if test="@Ognl@isNotEmpty(parent)"> #{parent},  </if>
+				<if test="@Ognl@isNotEmpty(children)"> #{children},  </if>
+				<if test="@Ognl@isNotEmpty(valid)"> #{valid},  </if>
+				<if test="@Ognl@isNotEmpty(orgId)"> #{orgId},  </if>
+				<if test="@Ognl@isNotEmpty(menuType)"> #{menuType} </if>
+		</trim>
+		)
+	</insert>
+	
+	<delete id="delete" parameterType="String">
+		DELETE FROM t_org_menu 
+		WHERE 			id
+		=#{			id
+		}
+	</delete>
+	
+	<update id="update" parameterType="com.chuangbu.core.orm.hospital.domain.TOrgMenu">
+		UPDATE t_org_menu 
+			<set>
+					<if test="@Ognl@isNotEmpty(menuName)"> menu_name=#{menuName},  </if>
+					<if test="@Ognl@isNotEmpty(menuCode)"> menu_code=#{menuCode},  </if>
+					<if test="@Ognl@isNotEmpty(menuUrl)"> menu_url=#{menuUrl},  </if>
+					<if test="@Ognl@isNotEmpty(icoPath)"> ico_path=#{icoPath},  </if>
+					<if test="@Ognl@isNotEmpty(level)"> level=#{level},  </if>
+					<if test="@Ognl@isNotEmpty(disOrder)"> dis_order=#{disOrder},  </if>
+					<if test="@Ognl@isNotEmpty(parent)"> parent=#{parent},  </if>
+					<if test="@Ognl@isNotEmpty(children)"> children=#{children},  </if>
+					<if test="@Ognl@isNotEmpty(valid)"> valid=#{valid},  </if>
+					<if test="@Ognl@isNotEmpty(orgId)"> org_id=#{orgId},  </if>
+					<if test="@Ognl@isNotEmpty(menuType)"> menu_type=#{menuType} </if>
+		    </set>
+		WHERE 			id
+		=#{id}
+	</update>
+	
+	<select id="findOne" parameterType="String" resultMap="Result">
+		SELECT <include refid="columns"/>
+		FROM t_org_menu
+		WHERE 			id
+		=#{			id
+		}
+	</select>
+	
+	<select id="findAll" parameterType="String" resultMap="Result">
+		SELECT <include refid="columns"/>
+		FROM t_org_menu
+		<if test="@Ognl@isNotEmpty(list)">
+		WHERE 			id
+		 IN
+		<foreach item="item" index="index" collection="list" open="(" separator="," close=")">  
+				#{item}
+		</foreach>
+		</if>
+	</select>
+	
+	<select id="find" parameterType="com.chuangbu.core.orm.hospital.domain.TOrgMenu" resultMap="Result">
+		SELECT <include refid="columns"/>
+		FROM t_org_menu
+		<include refid="dynamicWhere"/>
+		<if test="@Ognl@isNotEmpty(orderBy)"> order by ${orderBy}  </if>
+	</select>
+</mapper>

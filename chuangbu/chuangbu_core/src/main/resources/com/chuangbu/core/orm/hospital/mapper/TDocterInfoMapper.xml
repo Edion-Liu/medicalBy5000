@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+<mapper namespace="com.chuangbu.core.orm.hospital.mapper.TDocterInfoMapper">
+
+	<resultMap id="Result" type="com.chuangbu.core.orm.hospital.domain.TDocterInfo">
+				<id property="id" column="id" />
+				<result property="name" column="name" />
+				<result property="title" column="title" />
+				<result property="position" column="position" />
+				<result property="age" column="age" />
+				<result property="sex" column="sex" />
+				<result property="photoPath" column="photo_path" />
+				<result property="tel" column="tel" />
+				<result property="level" column="level" />
+				<result property="remark" column="remark" />
+				<result property="deptId" column="dept_id" />
+				<result property="deptName" column="dept_name" />
+				<result property="pageUrl" column="page_url" />
+				<result property="pageUrlType" column="page_url_type" />
+				<result property="orgId" column="org_id" />
+				<result property="unit" column="unit" />
+				<result property="olRegister" column="ol_register" />
+				<result property="valid" column="valid" />
+				<result property="specialty" column="Specialty" />
+				<result property="synopsis" column="synopsis" />
+				<result property="visitInfo" column="Visit_info" />
+				<result property="achievements" column="achievements" />
+				<result property="publishAnArticle" column="publish_an_article" />
+				<result property="disOrder" column="dis_order" />
+	</resultMap>
+	
+	<sql id="columns">
+		id,name,title,position,age,sex,photo_path,tel,level,remark,dept_id,dept_name,page_url,page_url_type,org_id,unit,ol_register,valid,Specialty,synopsis,Visit_info,achievements,publish_an_article,dis_order
+	</sql>
+	
+	<sql id="dynamicWhere">
+		<where>
+					<if test="@Ognl@isNotEmpty(id)"> AND id  = #{id}  </if>
+					<if test="@Ognl@isNotEmpty(name)"> AND name  = #{name}  </if>
+					<if test="@Ognl@isNotEmpty(title)"> AND title  = #{title}  </if>
+					<if test="@Ognl@isNotEmpty(position)"> AND position  = #{position}  </if>
+					<if test="@Ognl@isNotEmpty(age)"> AND age  =#{age} </if>
+					<if test="@Ognl@isNotEmpty(sex)"> AND sex  = #{sex}  </if>
+					<if test="@Ognl@isNotEmpty(photoPath)"> AND photo_path  = #{photoPath}  </if>
+					<if test="@Ognl@isNotEmpty(tel)"> AND tel  = #{tel}  </if>
+					<if test="@Ognl@isNotEmpty(level)"> AND level  =#{level} </if>
+					<if test="@Ognl@isNotEmpty(remark)"> AND remark  = #{remark}  </if>
+					<if test="@Ognl@isNotEmpty(deptId)"> AND dept_id  = #{deptId}  </if>
+					<if test="@Ognl@isNotEmpty(deptName)"> AND dept_name  = #{deptName}  </if>
+					<if test="@Ognl@isNotEmpty(pageUrl)"> AND page_url  = #{pageUrl}  </if>
+					<if test="@Ognl@isNotEmpty(pageUrlType)"> AND page_url_type  = #{pageUrlType}  </if>
+					<if test="@Ognl@isNotEmpty(orgId)"> AND org_id  = #{orgId}  </if>
+					<if test="@Ognl@isNotEmpty(unit)"> AND unit  = #{unit}  </if>
+					<if test="@Ognl@isNotEmpty(olRegister)"> AND ol_register  =#{olRegister} </if>
+					<if test="@Ognl@isNotEmpty(valid)"> AND valid  =#{valid} </if>
+					<if test="@Ognl@isNotEmpty(specialty)"> AND Specialty  = #{specialty}  </if>
+					<if test="@Ognl@isNotEmpty(synopsis)"> AND synopsis  = #{synopsis}  </if>
+					<if test="@Ognl@isNotEmpty(visitInfo)"> AND Visit_info  = #{visitInfo}  </if>
+					<if test="@Ognl@isNotEmpty(achievements)"> AND achievements  = #{achievements}  </if>
+					<if test="@Ognl@isNotEmpty(publishAnArticle)"> AND publish_an_article  = #{publishAnArticle}  </if>
+					<if test="@Ognl@isNotEmpty(disOrder)"> AND dis_order  =#{disOrder} </if>
+		</where>
+	</sql>
+
+	<insert id="save" parameterType="com.chuangbu.core.orm.hospital.domain.TDocterInfo">
+		INSERT INTO t_docter_info
+		(
+		<trim prefix="" suffixOverrides=",">  
+				<if test="@Ognl@isNotEmpty(id)">  id,  </if>
+				<if test="@Ognl@isNotEmpty(name)">  name,  </if>
+				<if test="@Ognl@isNotEmpty(title)">  title,  </if>
+				<if test="@Ognl@isNotEmpty(position)">  position,  </if>
+				<if test="@Ognl@isNotEmpty(age)">  age,  </if>
+				<if test="@Ognl@isNotEmpty(sex)">  sex,  </if>
+				<if test="@Ognl@isNotEmpty(photoPath)">  photo_path,  </if>
+				<if test="@Ognl@isNotEmpty(tel)">  tel,  </if>
+				<if test="@Ognl@isNotEmpty(level)">  level,  </if>
+				<if test="@Ognl@isNotEmpty(remark)">  remark,  </if>
+				<if test="@Ognl@isNotEmpty(deptId)">  dept_id,  </if>
+				<if test="@Ognl@isNotEmpty(deptName)">  dept_name,  </if>
+				<if test="@Ognl@isNotEmpty(pageUrl)">  page_url,  </if>
+				<if test="@Ognl@isNotEmpty(pageUrlType)">  page_url_type,  </if>
+				<if test="@Ognl@isNotEmpty(orgId)">  org_id,  </if>
+				<if test="@Ognl@isNotEmpty(unit)">  unit,  </if>
+				<if test="@Ognl@isNotEmpty(olRegister)">  ol_register,  </if>
+				<if test="@Ognl@isNotEmpty(valid)">  valid,  </if>
+				<if test="@Ognl@isNotEmpty(specialty)">  Specialty,  </if>
+				<if test="@Ognl@isNotEmpty(synopsis)">  synopsis,  </if>
+				<if test="@Ognl@isNotEmpty(visitInfo)">  Visit_info,  </if>
+				<if test="@Ognl@isNotEmpty(achievements)">  achievements,  </if>
+				<if test="@Ognl@isNotEmpty(publishAnArticle)">  publish_an_article,  </if>
+				<if test="@Ognl@isNotEmpty(disOrder)">  dis_order </if>
+		</trim>
+		)
+		VALUES
+		(
+		<trim prefix="" suffixOverrides=",">  
+				<if test="@Ognl@isNotEmpty(id)"> #{id},  </if>
+				<if test="@Ognl@isNotEmpty(name)"> #{name},  </if>
+				<if test="@Ognl@isNotEmpty(title)"> #{title},  </if>
+				<if test="@Ognl@isNotEmpty(position)"> #{position},  </if>
+				<if test="@Ognl@isNotEmpty(age)"> #{age},  </if>
+				<if test="@Ognl@isNotEmpty(sex)"> #{sex},  </if>
+				<if test="@Ognl@isNotEmpty(photoPath)"> #{photoPath},  </if>
+				<if test="@Ognl@isNotEmpty(tel)"> #{tel},  </if>
+				<if test="@Ognl@isNotEmpty(level)"> #{level},  </if>
+				<if test="@Ognl@isNotEmpty(remark)"> #{remark},  </if>
+				<if test="@Ognl@isNotEmpty(deptId)"> #{deptId},  </if>
+				<if test="@Ognl@isNotEmpty(deptName)"> #{deptName},  </if>
+				<if test="@Ognl@isNotEmpty(pageUrl)"> #{pageUrl},  </if>
+				<if test="@Ognl@isNotEmpty(pageUrlType)"> #{pageUrlType},  </if>
+				<if test="@Ognl@isNotEmpty(orgId)"> #{orgId},  </if>
+				<if test="@Ognl@isNotEmpty(unit)"> #{unit},  </if>
+				<if test="@Ognl@isNotEmpty(olRegister)"> #{olRegister},  </if>
+				<if test="@Ognl@isNotEmpty(valid)"> #{valid},  </if>
+				<if test="@Ognl@isNotEmpty(specialty)"> #{specialty},  </if>
+				<if test="@Ognl@isNotEmpty(synopsis)"> #{synopsis},  </if>
+				<if test="@Ognl@isNotEmpty(visitInfo)"> #{visitInfo},  </if>
+				<if test="@Ognl@isNotEmpty(achievements)"> #{achievements},  </if>
+				<if test="@Ognl@isNotEmpty(publishAnArticle)"> #{publishAnArticle},  </if>
+				<if test="@Ognl@isNotEmpty(disOrder)"> #{disOrder} </if>
+		</trim>
+		)
+	</insert>
+	
+	<delete id="delete" parameterType="String">
+		DELETE FROM t_docter_info 
+		WHERE 			id
+		=#{			id
+		}
+	</delete>
+	
+	<update id="update" parameterType="com.chuangbu.core.orm.hospital.domain.TDocterInfo">
+		UPDATE t_docter_info 
+			<set>
+					<if test="@Ognl@isNotEmpty(name)"> name=#{name},  </if>
+					<if test="@Ognl@isNotEmpty(title)"> title=#{title},  </if>
+					<if test="@Ognl@isNotEmpty(position)"> position=#{position},  </if>
+					<if test="@Ognl@isNotEmpty(age)"> age=#{age},  </if>
+					<if test="@Ognl@isNotEmpty(sex)"> sex=#{sex},  </if>
+					<if test="@Ognl@isNotEmpty(photoPath)"> photo_path=#{photoPath},  </if>
+					<if test="@Ognl@isNotEmpty(tel)"> tel=#{tel},  </if>
+					<if test="@Ognl@isNotEmpty(level)"> level=#{level},  </if>
+					<if test="@Ognl@isNotEmpty(remark)"> remark=#{remark},  </if>
+					<if test="@Ognl@isNotEmpty(deptId)"> dept_id=#{deptId},  </if>
+					<if test="@Ognl@isNotEmpty(deptName)"> dept_name=#{deptName},  </if>
+					<if test="@Ognl@isNotEmpty(pageUrl)"> page_url=#{pageUrl},  </if>
+					<if test="@Ognl@isNotEmpty(pageUrlType)"> page_url_type=#{pageUrlType},  </if>
+					<if test="@Ognl@isNotEmpty(orgId)"> org_id=#{orgId},  </if>
+					<if test="@Ognl@isNotEmpty(unit)"> unit=#{unit},  </if>
+					<if test="@Ognl@isNotEmpty(olRegister)"> ol_register=#{olRegister},  </if>
+					<if test="@Ognl@isNotEmpty(valid)"> valid=#{valid},  </if>
+					<if test="@Ognl@isNotEmpty(specialty)"> Specialty=#{specialty},  </if>
+					<if test="@Ognl@isNotEmpty(synopsis)"> synopsis=#{synopsis},  </if>
+					<if test="@Ognl@isNotEmpty(visitInfo)"> Visit_info=#{visitInfo},  </if>
+					<if test="@Ognl@isNotEmpty(achievements)"> achievements=#{achievements},  </if>
+					<if test="@Ognl@isNotEmpty(publishAnArticle)"> publish_an_article=#{publishAnArticle},  </if>
+					<if test="@Ognl@isNotEmpty(disOrder)"> dis_order=#{disOrder} </if>
+		    </set>
+		WHERE 			id
+		=#{id}
+	</update>
+	
+	<select id="findOne" parameterType="String" resultMap="Result">
+		SELECT <include refid="columns"/>
+		FROM t_docter_info
+		WHERE 			id
+		=#{			id
+		}
+	</select>
+	
+	<select id="findAll" parameterType="String" resultMap="Result">
+		SELECT <include refid="columns"/>
+		FROM t_docter_info
+		<if test="@Ognl@isNotEmpty(list)">
+		WHERE 			id
+		 IN
+		<foreach item="item" index="index" collection="list" open="(" separator="," close=")">  
+				#{item}
+		</foreach>
+		</if>
+	</select>
+	
+	<select id="find" parameterType="com.chuangbu.core.orm.hospital.domain.TDocterInfo" resultMap="Result">
+		SELECT <include refid="columns"/>
+		FROM t_docter_info
+		<include refid="dynamicWhere"/>
+		<if test="@Ognl@isNotEmpty(orderBy)"> order by ${orderBy}  </if>
+	</select>
+	
+	<select id="findMainInfo" parameterType="com.chuangbu.core.orm.hospital.domain.TDocterInfo" resultMap="Result">
+		SELECT id,name,title,position,photo_path,level,remark,dept_id,dept_name,page_url,page_url_type
+		FROM t_docter_info
+		<include refid="dynamicWhere"/>
+		<if test="@Ognl@isNotEmpty(orderBy)"> order by ${orderBy}  </if>
+	</select>
+</mapper>

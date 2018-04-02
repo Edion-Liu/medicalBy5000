@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+<mapper namespace="com.chuangbu.core.orm.hospital.mapper.TDeptInfoMapper">
+
+	<resultMap id="Result" type="com.chuangbu.core.orm.hospital.domain.TDeptInfo">
+				<id property="id" column="id" />
+				<result property="name" column="name" />
+				<result property="code" column="code" />
+				<result property="level" column="level" />
+				<result property="deptUrl" column="dept_url" />
+				<result property="deptUrlType" column="dept_url_type" />
+				<result property="icoPath" column="ico_path" />
+				<result property="valid" column="valid" />
+				<result property="orgId" column="org_id" />
+				<result property="synopsis" column="synopsis" />
+				<result property="specialty" column="Specialty" />
+				<result property="team" column="team" />
+				<result property="equipment" column="equipment" />
+				<result property="achievements" column="achievements" />
+				<result property="disOrder" column="dis_order" />
+				<result property="remark" column="remark" />
+	</resultMap>
+	
+	<sql id="columns">
+		id,name,code,level,dept_url,dept_url_type,ico_path,valid,org_id,synopsis,Specialty,team,equipment,achievements,dis_order,remark
+	</sql>
+	
+	<sql id="dynamicWhere">
+		<where>
+					<if test="@Ognl@isNotEmpty(id)"> AND id  = #{id}  </if>
+					<if test="@Ognl@isNotEmpty(name)"> AND name  = #{name}  </if>
+					<if test="@Ognl@isNotEmpty(code)"> AND code  = #{code}  </if>
+					<if test="@Ognl@isNotEmpty(level)"> AND level  =#{level} </if>
+					<if test="@Ognl@isNotEmpty(deptUrl)"> AND dept_url  = #{deptUrl}  </if>
+					<if test="@Ognl@isNotEmpty(deptUrlType)"> AND dept_url_type  = #{deptUrlType}  </if>
+					<if test="@Ognl@isNotEmpty(icoPath)"> AND ico_path  = #{icoPath}  </if>
+					<if test="@Ognl@isNotEmpty(valid)"> AND valid  =#{valid} </if>
+					<if test="@Ognl@isNotEmpty(orgId)"> AND org_id  = #{orgId}  </if>
+					<if test="@Ognl@isNotEmpty(synopsis)"> AND synopsis  = #{synopsis}  </if>
+					<if test="@Ognl@isNotEmpty(specialty)"> AND Specialty  = #{specialty}  </if>
+					<if test="@Ognl@isNotEmpty(team)"> AND team  = #{team}  </if>
+					<if test="@Ognl@isNotEmpty(equipment)"> AND equipment  = #{equipment}  </if>
+					<if test="@Ognl@isNotEmpty(achievements)"> AND achievements  = #{achievements}  </if>
+					<if test="@Ognl@isNotEmpty(disOrder)"> AND dis_order  =#{disOrder} </if>
+					<if test="@Ognl@isNotEmpty(remark)"> AND remark  = #{remark}  </if>
+		</where>
+	</sql>
+
+	<insert id="save" parameterType="com.chuangbu.core.orm.hospital.domain.TDeptInfo">
+		INSERT INTO t_dept_info
+		(
+		<trim prefix="" suffixOverrides=",">  
+				<if test="@Ognl@isNotEmpty(id)">  id,  </if>
+				<if test="@Ognl@isNotEmpty(name)">  name,  </if>
+				<if test="@Ognl@isNotEmpty(code)">  code,  </if>
+				<if test="@Ognl@isNotEmpty(level)">  level,  </if>
+				<if test="@Ognl@isNotEmpty(deptUrl)">  dept_url,  </if>
+				<if test="@Ognl@isNotEmpty(deptUrlType)">  dept_url_type,  </if>
+				<if test="@Ognl@isNotEmpty(icoPath)">  ico_path,  </if>
+				<if test="@Ognl@isNotEmpty(valid)">  valid,  </if>
+				<if test="@Ognl@isNotEmpty(orgId)">  org_id,  </if>
+				<if test="@Ognl@isNotEmpty(synopsis)">  synopsis,  </if>
+				<if test="@Ognl@isNotEmpty(specialty)">  Specialty,  </if>
+				<if test="@Ognl@isNotEmpty(team)">  team,  </if>
+				<if test="@Ognl@isNotEmpty(equipment)">  equipment,  </if>
+				<if test="@Ognl@isNotEmpty(achievements)">  achievements,  </if>
+				<if test="@Ognl@isNotEmpty(disOrder)">  dis_order,  </if>
+				<if test="@Ognl@isNotEmpty(remark)">  remark </if>
+		</trim>
+		)
+		VALUES
+		(
+		<trim prefix="" suffixOverrides=",">  
+				<if test="@Ognl@isNotEmpty(id)"> #{id},  </if>
+				<if test="@Ognl@isNotEmpty(name)"> #{name},  </if>
+				<if test="@Ognl@isNotEmpty(code)"> #{code},  </if>
+				<if test="@Ognl@isNotEmpty(level)"> #{level},  </if>
+				<if test="@Ognl@isNotEmpty(deptUrl)"> #{deptUrl},  </if>
+				<if test="@Ognl@isNotEmpty(deptUrlType)"> #{deptUrlType},  </if>
+				<if test="@Ognl@isNotEmpty(icoPath)"> #{icoPath},  </if>
+				<if test="@Ognl@isNotEmpty(valid)"> #{valid},  </if>
+				<if test="@Ognl@isNotEmpty(orgId)"> #{orgId},  </if>
+				<if test="@Ognl@isNotEmpty(synopsis)"> #{synopsis},  </if>
+				<if test="@Ognl@isNotEmpty(specialty)"> #{specialty},  </if>
+				<if test="@Ognl@isNotEmpty(team)"> #{team},  </if>
+				<if test="@Ognl@isNotEmpty(equipment)"> #{equipment},  </if>
+				<if test="@Ognl@isNotEmpty(achievements)"> #{achievements},  </if>
+				<if test="@Ognl@isNotEmpty(disOrder)"> #{disOrder},  </if>
+				<if test="@Ognl@isNotEmpty(remark)"> #{remark} </if>
+		</trim>
+		)
+	</insert>
+	
+	<delete id="delete" parameterType="String">
+		DELETE FROM t_dept_info 
+		WHERE 			id
+		=#{			id
+		}
+	</delete>
+	
+	<update id="update" parameterType="com.chuangbu.core.orm.hospital.domain.TDeptInfo">
+		UPDATE t_dept_info 
+			<set>
+					<if test="@Ognl@isNotEmpty(name)"> name=#{name},  </if>
+					<if test="@Ognl@isNotEmpty(code)"> code=#{code},  </if>
+					<if test="@Ognl@isNotEmpty(level)"> level=#{level},  </if>
+					<if test="@Ognl@isNotEmpty(deptUrl)"> dept_url=#{deptUrl},  </if>
+					<if test="@Ognl@isNotEmpty(deptUrlType)"> dept_url_type=#{deptUrlType},  </if>
+					<if test="@Ognl@isNotEmpty(icoPath)"> ico_path=#{icoPath},  </if>
+					<if test="@Ognl@isNotEmpty(valid)"> valid=#{valid},  </if>
+					<if test="@Ognl@isNotEmpty(orgId)"> org_id=#{orgId},  </if>
+					<if test="@Ognl@isNotEmpty(synopsis)"> synopsis=#{synopsis},  </if>
+					<if test="@Ognl@isNotEmpty(specialty)"> Specialty=#{specialty},  </if>
+					<if test="@Ognl@isNotEmpty(team)"> team=#{team},  </if>
+					<if test="@Ognl@isNotEmpty(equipment)"> equipment=#{equipment},  </if>
+					<if test="@Ognl@isNotEmpty(achievements)"> achievements=#{achievements},  </if>
+					<if test="@Ognl@isNotEmpty(disOrder)"> dis_order=#{disOrder},  </if>
+					<if test="@Ognl@isNotEmpty(remark)"> remark=#{remark} </if>
+		    </set>
+		WHERE 			id
+		=#{id}
+	</update>
+	
+	<select id="findOne" parameterType="String" resultMap="Result">
+		SELECT <include refid="columns"/>
+		FROM t_dept_info
+		WHERE 			id
+		=#{			id
+		}
+	</select>
+	
+	<select id="findAll" parameterType="String" resultMap="Result">
+		SELECT <include refid="columns"/>
+		FROM t_dept_info
+		<if test="@Ognl@isNotEmpty(list)">
+		WHERE id
+		 IN
+		<foreach item="item" index="index" collection="list" open="(" separator="," close=")">  
+				#{item}
+		</foreach>
+		</if>
+	</select>
+	
+	<select id="find" parameterType="com.chuangbu.core.orm.hospital.domain.TDeptInfo" resultMap="Result">
+		SELECT <include refid="columns"/>
+		FROM t_dept_info
+		<include refid="dynamicWhere"/>
+		<if test="@Ognl@isNotEmpty(orderBy)"> order by ${orderBy}  </if>
+	</select>
+	
+	<select id="findMainInfo" parameterType="com.chuangbu.core.orm.hospital.domain.TDeptInfo" resultMap="Result">
+		SELECT id,name,code,level,dept_url,dept_url_type,ico_path
+		FROM t_dept_info
+		<include refid="dynamicWhere"/>
+		<if test="@Ognl@isNotEmpty(orderBy)"> order by ${orderBy}  </if>
+	</select>
+</mapper>

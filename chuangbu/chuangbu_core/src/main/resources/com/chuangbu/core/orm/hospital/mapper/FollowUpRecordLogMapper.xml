@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+<mapper namespace="com.chuangbu.core.orm.hospital.mapper.FollowUpRecordLogMapper">
+
+	<resultMap id="Result" type="com.chuangbu.core.orm.hospital.domain.FollowUpRecordLog">
+				<id property="id" column="id" />
+				<result property="name" column="name" />
+				<result property="type" column="type" />
+				<result property="docterId" column="docter_id" />
+				<result property="docterName" column="docter_name" />
+				<result property="patientId" column="patient_id" />
+				<result property="patientName" column="patient_name" />
+				<result property="path" column="path" />
+				<result property="ct" column="ct" />
+	</resultMap>
+	
+	<sql id="columns">
+		id,name,type,docter_id,docter_name,patient_id,patient_name,path,ct
+	</sql>
+	
+	<sql id="dynamicWhere">
+		<where>
+					<if test="@Ognl@isNotEmpty(id)"> AND id  LIKE '%${id}%'  </if>
+					<if test="@Ognl@isNotEmpty(name)"> AND name  LIKE '%${name}%'  </if>
+					<if test="@Ognl@isNotEmpty(type)"> AND type  LIKE '%${type}%'  </if>
+					<if test="@Ognl@isNotEmpty(docterId)"> AND docter_id  LIKE '%${docterId}%'  </if>
+					<if test="@Ognl@isNotEmpty(docterName)"> AND docter_name  LIKE '%${docterName}%'  </if>
+					<if test="@Ognl@isNotEmpty(patientId)"> AND patient_id  LIKE '%${patientId}%'  </if>
+					<if test="@Ognl@isNotEmpty(patientName)"> AND patient_name  LIKE '%${patientName}%'  </if>
+					<if test="@Ognl@isNotEmpty(path)"> AND path  LIKE '%${path}%'  </if>
+					<if test="@Ognl@isNotEmpty(ct)"> AND ct  =#{ct} </if>
+		</where>
+	</sql>
+
+	<insert id="save" parameterType="com.chuangbu.core.orm.hospital.domain.FollowUpRecordLog">
+		INSERT INTO t_followup_record_log
+		(
+		<trim prefix="" suffixOverrides=",">  
+				<if test="@Ognl@isNotEmpty(id)">  id,  </if>
+				<if test="@Ognl@isNotEmpty(name)">  name,  </if>
+				<if test="@Ognl@isNotEmpty(type)">  type,  </if>
+				<if test="@Ognl@isNotEmpty(docterId)">  docter_id,  </if>
+				<if test="@Ognl@isNotEmpty(docterName)">  docter_name,  </if>
+				<if test="@Ognl@isNotEmpty(patientId)">  patient_id,  </if>
+				<if test="@Ognl@isNotEmpty(patientName)">  patient_name,  </if>
+				<if test="@Ognl@isNotEmpty(path)">  path,  </if>
+				<if test="@Ognl@isNotEmpty(ct)">  ct </if>
+		</trim>
+		)
+		VALUES
+		(
+		<trim prefix="" suffixOverrides=",">  
+				<if test="@Ognl@isNotEmpty(id)"> #{id},  </if>
+				<if test="@Ognl@isNotEmpty(name)"> #{name},  </if>
+				<if test="@Ognl@isNotEmpty(type)"> #{type},  </if>
+				<if test="@Ognl@isNotEmpty(docterId)"> #{docterId},  </if>
+				<if test="@Ognl@isNotEmpty(docterName)"> #{docterName},  </if>
+				<if test="@Ognl@isNotEmpty(patientId)"> #{patientId},  </if>
+				<if test="@Ognl@isNotEmpty(patientName)"> #{patientName},  </if>
+				<if test="@Ognl@isNotEmpty(path)"> #{path},  </if>
+				<if test="@Ognl@isNotEmpty(ct)"> #{ct} </if>
+		</trim>
+		)
+	</insert>
+	
+	<delete id="delete" parameterType="String">
+		DELETE FROM t_followup_record_log 
+		WHERE 			id
+		=#{			id
+		}
+	</delete>
+	
+	<update id="update" parameterType="com.chuangbu.core.orm.hospital.domain.FollowUpRecordLog">
+		UPDATE t_followup_record_log 
+			<set>
+					<if test="@Ognl@isNotEmpty(name)"> name=#{name},  </if>
+					<if test="@Ognl@isNotEmpty(type)"> type=#{type},  </if>
+					<if test="@Ognl@isNotEmpty(docterId)"> docter_id=#{docterId},  </if>
+					<if test="@Ognl@isNotEmpty(docterName)"> docter_name=#{docterName},  </if>
+					<if test="@Ognl@isNotEmpty(patientId)"> patient_id=#{patientId},  </if>
+					<if test="@Ognl@isNotEmpty(patientName)"> patient_name=#{patientName},  </if>
+					<if test="@Ognl@isNotEmpty(path)"> path=#{path},  </if>
+					<if test="@Ognl@isNotEmpty(ct)"> ct=#{ct} </if>
+		    </set>
+		WHERE 			id
+		=#{id}
+	</update>
+	
+	<select id="findOne" parameterType="String" resultMap="Result">
+		SELECT <include refid="columns"/>
+		FROM t_followup_record_log
+		WHERE 			id
+		=#{			id
+		}
+	</select>
+	
+	<select id="findAll" parameterType="String" resultMap="Result">
+		SELECT <include refid="columns"/>
+		FROM t_followup_record_log
+		<if test="@Ognl@isNotEmpty(list)">
+		WHERE 			id
+		 IN
+		<foreach item="item" index="index" collection="list" open="(" separator="," close=")">  
+				#{item}
+		</foreach>
+		</if>
+	</select>
+	
+	<select id="find" parameterType="com.chuangbu.core.orm.hospital.domain.FollowUpRecordLog" resultMap="Result">
+		SELECT <include refid="columns"/>
+		FROM t_followup_record_log
+		<include refid="dynamicWhere"/>
+	</select>
+</mapper>

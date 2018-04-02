@@ -1,0 +1,1 @@
+wsdl2java -p com.chuangbu.rpc.client -client -d F:\\Workspaces\\SVN\\chuangbu\\chuangbu_rpc\\src\\main\\java http://111.56.45.94:9321/Service.asmx?wsdl

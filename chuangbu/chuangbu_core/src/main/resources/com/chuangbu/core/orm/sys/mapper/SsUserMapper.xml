@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+<mapper namespace="com.chuangbu.core.orm.sys.mapper.SsUserMapper">
+
+	<resultMap id="Result" type="com.chuangbu.core.orm.sys.domain.SsUser">
+				<id property="id" column="id" />
+				<result property="loginName" column="login_name" />
+				<result property="name" column="name" />
+				<result property="password" column="password" />
+				<result property="salt" column="salt" />
+				<result property="createtime" column="createtime" />
+				<result property="email" column="email" />
+				<result property="status" column="status" />
+				<result property="locked" column="locked" />
+	</resultMap>
+	
+	<sql id="columns">
+		id,login_name,name,password,salt,createtime,email,status,locked
+	</sql>
+	
+	<sql id="dynamicWhere">
+		<where>
+					<if test="@Ognl@isNotEmpty(id)"> AND id  LIKE '%${id}%'  </if>
+					<if test="@Ognl@isNotEmpty(loginName)"> AND login_name  LIKE '%${loginName}%'  </if>
+					<if test="@Ognl@isNotEmpty(name)"> AND name  LIKE '%${name}%'  </if>
+					<if test="@Ognl@isNotEmpty(password)"> AND password  LIKE '%${password}%'  </if>
+					<if test="@Ognl@isNotEmpty(salt)"> AND salt  LIKE '%${salt}%'  </if>
+					<if test="@Ognl@isNotEmpty(createtime)"> AND createtime  =#{createtime} </if>
+					<if test="@Ognl@isNotEmpty(email)"> AND email  LIKE '%${email}%'  </if>
+					<if test="@Ognl@isNotEmpty(status)"> AND status  LIKE '%${status}%'  </if>
+					<if test="@Ognl@isNotEmpty(locked)"> AND locked  =#{locked} </if>
+		</where>
+	</sql>
+
+	<insert id="save" parameterType="com.chuangbu.core.orm.sys.domain.SsUser">
+		INSERT INTO ss_user
+		(
+		<trim prefix="" suffixOverrides=",">  
+				<if test="@Ognl@isNotEmpty(id)">  id,  </if>
+				<if test="@Ognl@isNotEmpty(loginName)">  login_name,  </if>
+				<if test="@Ognl@isNotEmpty(name)">  name,  </if>
+				<if test="@Ognl@isNotEmpty(password)">  password,  </if>
+				<if test="@Ognl@isNotEmpty(salt)">  salt,  </if>
+				<if test="@Ognl@isNotEmpty(createtime)">  createtime,  </if>
+				<if test="@Ognl@isNotEmpty(email)">  email,  </if>
+				<if test="@Ognl@isNotEmpty(status)">  status,  </if>
+				<if test="@Ognl@isNotEmpty(locked)">  locked </if>
+		</trim>
+		)
+		VALUES
+		(
+		<trim prefix="" suffixOverrides=",">  
+				<if test="@Ognl@isNotEmpty(id)"> #{id},  </if>
+				<if test="@Ognl@isNotEmpty(loginName)"> #{loginName},  </if>
+				<if test="@Ognl@isNotEmpty(name)"> #{name},  </if>
+				<if test="@Ognl@isNotEmpty(password)"> #{password},  </if>
+				<if test="@Ognl@isNotEmpty(salt)"> #{salt},  </if>
+				<if test="@Ognl@isNotEmpty(createtime)"> #{createtime},  </if>
+				<if test="@Ognl@isNotEmpty(email)"> #{email},  </if>
+				<if test="@Ognl@isNotEmpty(status)"> #{status},  </if>
+				<if test="@Ognl@isNotEmpty(locked)"> #{locked} </if>
+		</trim>
+		)
+	</insert>
+	
+	<delete id="delete" parameterType="String">
+		DELETE FROM ss_user 
+		WHERE 			id
+		=#{			id
+		}
+	</delete>
+	
+	<update id="update" parameterType="com.chuangbu.core.orm.sys.domain.SsUser">
+		UPDATE ss_user 
+			<set>
+					<if test="@Ognl@isNotEmpty(loginName)"> login_name=#{loginName},  </if>
+					<if test="@Ognl@isNotEmpty(name)"> name=#{name},  </if>
+					<if test="@Ognl@isNotEmpty(password)"> password=#{password},  </if>
+					<if test="@Ognl@isNotEmpty(salt)"> salt=#{salt},  </if>
+					<if test="@Ognl@isNotEmpty(createtime)"> createtime=#{createtime},  </if>
+					<if test="@Ognl@isNotEmpty(email)"> email=#{email},  </if>
+					<if test="@Ognl@isNotEmpty(status)"> status=#{status},  </if>
+					<if test="@Ognl@isNotEmpty(locked)"> locked=#{locked} </if>
+		    </set>
+		WHERE 			id
+		=#{id}
+	</update>
+	
+	<select id="findOne" parameterType="String" resultMap="Result">
+		SELECT <include refid="columns"/>
+		FROM ss_user
+		WHERE 			id
+		=#{			id
+		}
+	</select>
+	
+	<select id="findAll" parameterType="String" resultMap="Result">
+		SELECT <include refid="columns"/>
+		FROM ss_user
+		<if test="@Ognl@isNotEmpty(list)">
+		WHERE 			id
+		 IN
+		<foreach item="item" index="index" collection="list" open="(" separator="," close=")">  
+				#{item}
+		</foreach>
+		</if>
+	</select>
+	
+	<select id="find" parameterType="com.chuangbu.core.orm.sys.domain.SsUser" resultMap="Result">
+		SELECT <include refid="columns"/>
+		FROM ss_user
+		<include refid="dynamicWhere"/>
+	</select>
+</mapper>

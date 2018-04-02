@@ -1,0 +1,74 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java"  pageEncoding="UTF-8"  %>
+<%@ include file="./../../commons/taglibs.jsp"%>
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>医生简介</title>
+    <link rel="stylesheet" href="./../../framework/weui/style/weui.css"/>
+    <link rel="stylesheet" href="./../../css/theme_default.css"/>
+</head>
+<body ontouchstart>
+	<div class="head_back">
+	 	<span class="back" onclick="history.go(-1)">返回</span>
+	 	陈光大夫
+	 	<span class="refresh" onclick="location.reload()">刷新</span>
+	 </div>
+	<div class="container" id="container">
+		<div class="page js_show" >
+	
+	        <div class="weui-flex doctor-flex" >
+	            <div class="weui-flex__item"><div class="placeholder">
+					<h4>姓名：<span>陈 光</span></h4>
+					<h4>科室：<span>神经内科</span></h4>
+					<h4>职称：<span>主任</span></h4>
+				</div></div>
+	            <div class="weui-flex__item"><div class="placeholder">
+					<img src="./../../myres/img/doctor/20141104170348_13061.jpg" alt="" >
+				</div></div>
+	        </div>
+	        <div class="weui-flex doctor-flex" >
+	            <div class="weui-flex__item"><div class="placeholder">
+					<h4>擅长：<span>科左后旗人民医院始建于1949年，是一所集医疗、保健、教学、科研、急救、康复为一体的非营</span></h4>
+				</div></div>
+	        </div>
+	        
+			<article class="weui-article">
+	            <section>
+	            	<h4 class="title">【简介】</h4>
+                    <p>
+                     	 科左后旗人民医院始建于1949年，是一所集医疗、保健、教学、科研、急救、康复为一体的非营利性二级甲等综合医院，是卫生部、世界卫生组织命名的“爱婴医院”、国际紧急救援中心网络医院、自治区级“文明单位”、通辽市120急救指挥中心科左后旗120急救站。承担全旗和周边地区人群的医疗保健及全旗乡镇苏木卫生院的业务指导、人员培训任务，承担市120急救中心调度和全旗各种突发公共卫生事件应急救援任务，承担全旗各种大型公益活动的医疗保健任务，是通辽职业学院和旗职业技术学校的教学实习基地，是科左后旗高校毕业生就业见习基地，是全旗农村合作医疗和城镇职工医疗保险及工伤保险定点医院。
+                    </p>
+	            	<h4 class="title">【科研成果】</h4>
+                    <p>
+                     	 科左后旗人民医院始建于1949年，是一所集医疗、保健、教学、科研、急救、康复为一体的非营利性二级甲等综合医院，是卫生部、世界卫生组织命名的“爱婴医院”、国际紧急救援中心网络医院、自治区级“文明单位”、通辽市120急救指挥中心科左后旗120急救站。承担全旗和周边地区人群的医疗保健及全旗乡镇苏木卫生院的业务指导、人员培训任务，承担市120急救中心调度和全旗各种突发公共卫生事件应急救援任务，承担全旗各种大型公益活动的医疗保健任务，是通辽职业学院和旗职业技术学校的教学实习基地，是科左后旗高校毕业生就业见习基地，是全旗农村合作医疗和城镇职工医疗保险及工伤保险定点医院。
+                    </p>
+	            	<h4 class="title">【病例】</h4>
+                    <p>
+                     	 科左后旗人民医院始建于1949年，是一所集医疗、保健、教学、科研、急救、康复为一体的非营利性二级甲等综合医院，是卫生部、世界卫生组织命名的“爱婴医院”、国际紧急救援中心网络医院、自治区级“文明单位”、通辽市120急救指挥中心科左后旗120急救站。承担全旗和周边地区人群的医疗保健及全旗乡镇苏木卫生院的业务指导、人员培训任务，承担市120急救中心调度和全旗各种突发公共卫生事件应急救援任务，承担全旗各种大型公益活动的医疗保健任务，是通辽职业学院和旗职业技术学校的教学实习基地，是科左后旗高校毕业生就业见习基地，是全旗农村合作医疗和城镇职工医疗保险及工伤保险定点医院。
+                    </p>
+                    
+	            </section>
+	                
+	        </article>
+	        
+	        
+	    	
+           
+             <%@include file="./../inc/tabbar.jsp"%>
+		</div>
+	</div>
+    <script src="./../../framework/weui/js/weui.min.js"></script>
+    <script src="./../../js/app/common/common.js"></script>
+    
+<script type="text/javascript">
+    window.onload=function(){
+      
+	}
+    
+	
+</script>
+
+</body>
+</html>
