@@ -98,7 +98,7 @@ public class TDocterInfo extends TDocterInfoPo implements Domain {
 		if(this.getPublishAnArticle().getBytes().length > 1500)
 			sb.append("发表文章宽度不能超过1,500个字符！");
 			
-		String msg = sb.toString();
+		 String msg = sb.toString();
 		if (msg.length() == 0)
 			  return null ;
 

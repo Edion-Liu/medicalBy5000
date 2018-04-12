@@ -57,7 +57,10 @@ public class WebLogAspect {
             	appId = (String) session.getAttribute("appId");
         		if(StringUtils.isBlank(appId)){
             	 HttpServletResponse response = attributes.getResponse();
-                 response.sendRedirect("404"); 
+                    /**
+                     *  自定义修改
+                     */
+//                 response.sendRedirect("404");
         		}else{
         			session.setAttribute("appId", appId);
         		}

@@ -69,6 +69,7 @@ public class ShiroConfig {
 		shiroFilterFactoryBean.setLoginUrl("/login");
 		shiroFilterFactoryBean.setSuccessUrl("/main");
 		shiroFilterFactoryBean.setUnauthorizedUrl("/unauthorized");
+
 		filterChainDefinitionMap.put("/style/**", "anon");
 		filterChainDefinitionMap.put("/js/**", "anon");
 		filterChainDefinitionMap.put("/static/**", "anon");

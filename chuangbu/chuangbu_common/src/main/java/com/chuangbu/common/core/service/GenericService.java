@@ -10,7 +10,7 @@ import com.chuangbu.common.core.orm.domain.Domain;
 * @Description: TODO(用一句话描述该文件做什么) 
 * @author 361cjx@163.com   
 * @date 2017年2月25日 下午9:51:01 
-* @version V1.0   
+* @version V1.0   ddd
 */
 
 public abstract interface GenericService<T extends Domain, ID extends Serializable> 

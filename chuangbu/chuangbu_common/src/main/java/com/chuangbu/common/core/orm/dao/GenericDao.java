@@ -23,4 +23,6 @@ public abstract interface GenericDao<T extends Domain, ID extends Serializable> 
 
   public abstract void deleteAll(List<ID> paramList);
 
+
+
 }

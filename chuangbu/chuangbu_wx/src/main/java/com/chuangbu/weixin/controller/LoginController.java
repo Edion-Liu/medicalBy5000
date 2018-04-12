@@ -39,7 +39,7 @@ public class LoginController {
 		try {
 			System.out.println("-----login------------------");
 			if (StringUtils.isBlank(userName)) {
-				return new ModelAndView("login");
+                return new ModelAndView("login");
 			}
 			System.out.println("-----开始校验------------------");
 			Subject currentUser = SecurityUtils.getSubject();

@@ -39,7 +39,7 @@ public class Codegen {
 	private static String rootPath;
 	
 	static{
-		rootPath = System.getProperty("user.dir")+"/src/main/resources";
+		rootPath = System.getProperty("user.dir")+"\\codegen\\src\\main\\resources";
 	}
 
 	public static void setRootPath(String path) {
@@ -50,8 +50,9 @@ public class Codegen {
 		if(rootPath.isEmpty()){
 			rootPath=new File("").getAbsolutePath();
 		}
-		if(!rootPath.endsWith("\\"))
-			rootPath +="/";
+		if(!rootPath.endsWith("\\")){
+			rootPath +="\\";
+		}
 		return rootPath;
 	}
 	
@@ -89,7 +90,7 @@ public class Codegen {
 	/**
 	 * 读取XML配置
 	 * 
-	 * @param xmlFile
+	 * @param
 	 * @return
 	 * @throws CodegenException
 	 */
@@ -142,6 +143,13 @@ public class Codegen {
 
 		// 3.从XML中读templates
 		Element templatesEl= root.element("templates");
+        /**
+         *  从xml 文件中获取配置模板路径
+         */
+		String basepathXML=templatesEl.attributeValue("basepath");
+        /**
+         * 根据项目相对路径获取模板路径
+         */
 		String basepath= getRootPath()+"template";
 		Templates templates = cm.new Templates(basepath);
 		cm.setTemplates(templates);
@@ -168,9 +176,10 @@ public class Codegen {
 				//String dir = StringUtil.replaceVariable(fileEl.attributeValue("dir"), system);
 				String dir = fileEl.attributeValue("dir");
 				String template= templates.getTemplate().get(refTemplate);
-				if(template==null)
-					throw new CodegenException("没有找到" +refTemplate +"对应的模板!");
-			
+				if(template==null){
+                    throw new CodegenException("没有找到" +refTemplate +"对应的模板!");
+                }
+
 				String sub=fileEl.attributeValue("sub");
 				String override=fileEl.attributeValue("override");
 				boolean isOverride=false;
@@ -182,10 +191,16 @@ public class Codegen {
 					String insertTag=fileEl.attributeValue("insertTag");
 					String startTag=fileEl.attributeValue("startTag");
 					String endTag=fileEl.attributeValue("endTag");
-					if(insertTag==null)
-						insertTag="<!--insertbefore-->";
-					if(StringUtil.isEmpty(startTag)) startTag="";
-					if(StringUtil.isEmpty(endTag)) endTag="";
+					if(insertTag==null){
+                        insertTag="<!--insertbefore-->";
+                    }
+					if(StringUtil.isEmpty(startTag)){
+                        startTag="";
+
+                    }
+					if(StringUtil.isEmpty(endTag)){
+                        endTag="";
+                    }
 					if(sub!=null&&sub.toLowerCase().equals("true")){
 						files.addFile(template, filename, dir,true,isOverride,true,insertTag,startTag,endTag);
 					}else{
@@ -360,7 +375,9 @@ public class Codegen {
 					String endTag=file.getEndTag();
 					boolean sub=file.isSub();
 					boolean override=file.isOverride();
-					if(isSub==true&&sub==false)continue;
+					if(isSub==true&&sub==false){
+                        continue;
+                    }
 					startTag=StringUtil.replaceVariable(startTag, tbName);
 					endTag=StringUtil.replaceVariable(endTag, tbName);
 					//生成文件目录
@@ -403,8 +420,10 @@ public class Codegen {
 	private void getAllTable(IDbHelper dbHelper,ConfigModel configModel,Configuration cfg ) throws CodegenException, IOException, TemplateException{
 		// XML中的genAll配置
 		GenAll genAll = configModel.getGenAll();
-		if(genAll==null) return;
-		
+		if(genAll==null){
+            return;
+        }
+
 		List<String> tableNames = null;
 		if (genAll.getTableNames() == null) {
 			tableNames = dbHelper.getAllTable();
@@ -418,8 +437,10 @@ public class Codegen {
 		}
 		int size=genAll.getFile().size();
 		
-		if(size==0) return;
-		
+		if(size==0){
+            return;
+        }
+
 		System.out.println("----------------生成多表开始------------------");
 		
 		for (ConfigModel.GenAll.File file : genAll.getFile()) {
@@ -558,7 +579,7 @@ public class Codegen {
 	public void execute() throws Exception {
 		try{
 		
-			String configXml=getRootPath() + "codegenconfig.xml";
+			String configXml=getRootPath() + "codegenconfig_mysql.xml";
 			File file=new File(configXml);
 			if(!file.exists()){
 				throw new CodegenException( "请确认配置文件："+configXml +"是否存在!");
@@ -586,6 +607,6 @@ public class Codegen {
 	public static void main(String[] args) throws Exception{
 		Codegen codegen = new Codegen();
 		codegen.execute();
-		//System.out.println("================="+codegen.hashCode());
+		System.out.println("================="+codegen.hashCode());
 	}
 }
