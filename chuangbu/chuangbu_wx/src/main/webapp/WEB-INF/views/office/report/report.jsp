@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
     <title>今日动态</title>
     <!-- 引入 ECharts 文件 -->
-   <%-- <script src="static/framework/echarts/echarts.simple.min.js"></script>--%>
+
     <style type="text/css">
         .button {
 
@@ -28,7 +28,10 @@
         .eChartsDiv{
             clear: both;
         }
+
     </style>
+
+    <script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery-ui-1.10.3.custom.js"></script>
 </head>
 
 <body ontouchstart>
@@ -51,7 +54,9 @@
 		                	 医技动态
 		                </div>
 		            </div>
-		            <div class="weui-tab__panel">
+
+		            <div class="weui-tab__panel" >
+                        <%--全院动态--%>
 		            	<div id="allhosp" >
 		            		<article class="weui-article">
 					            <section>
@@ -214,26 +219,45 @@
 					                
 					        </article>
 				        </div>
+                        <%--门诊动态--%>
 		            	<div id="clinic" style="display: none;">
-							1
+                            <section>
+
+                                <div class="eChartsDiv">
+                                    <div id="MENZHEN_MAIN0" style="height:80px;width: 100%;font-size: larger;text-align: center;">
+                                        <img src="<%=request.getContextPath() %>/img/smooth-drop.png" style="height: 30px;width: 30px;"/>  收入分析
+                                    </div>
+                                </div>
+
+                                <div class="eChartsDiv">
+                                    <div id="MENZHEN_MAIN1" style="height:400px;border:0px solid #F00;width: 100%;">
+
+                                    </div>
+                                </div>
+                            </section>
 				        </div>
+                            <%-- 住院动态--%>
 		            	<div id="hosp" style="display: none;">
 							2
 				        </div>
+                          <%--  医技动态--%>
 		            	<div id="medicalSkill" style="display: none;">
 							3
 				        </div>
 		            </div>
-		        </div>
+                </div>
 		    </div>
 		    
 			
 		</div>
 	</div>
+
     <script src="<%=request.getContextPath() %>/framework/echarts/js/echarts.min.js"></script>
     <script src="<%=request.getContextPath() %>/js/myecharts.js"></script>
-    
+
+
 <script type="text/javascript">
+
 	function initWin(){
 		$.ajax({
 	        type: "GET",
@@ -248,8 +272,7 @@
 	    });
 			
 	}
-
-	function setData(data){
+    function setData(data){
 		
 		//初始化医院财务收入饼图
 	    var obj =document.getElementById("main");
@@ -285,6 +308,7 @@
             if($(this).hasClass("clinic")){
                 $(".weui-tab__panel").children().hide();
                 $("#clinic").show();
+                InitChartMenZhen();
             }else if($(this).hasClass("hosp")){
                 $(".weui-tab__panel").children().hide();
                 $("#hosp").show();
@@ -300,16 +324,18 @@
 
     });
 	$(document).ready(function() {
-        InitChart();
-
-		//initWin();
-	});
+        InitChartQuanyuan();
+        /**
+         * 返回顶部
+         * */
+        returnTop.fadeInFadeOut('.weui-tab__panel');
+    });
 
 
     /**
-     * edsion
+     * 全院动态 图表初始化
      */
-    function InitChart() {
+    function InitChartQuanyuan() {
         // 基于准备好的dom，初始化echarts实例
         var myChart_main1 = echarts.init(document.getElementById('main1'));
         var myChart_main2 = echarts.init(document.getElementById('main2'));
@@ -1626,6 +1652,68 @@
         myChart_main2_ruchu.setOption(option_ruchu);
     }
 
+    /**
+     * 门诊动态
+     * @constructor
+     */
+    function InitChartMenZhen() {
+
+        var MANZHEN_MAIN1Temp = echarts.init(document.getElementById('MENZHEN_MAIN1'));
+        MANZHEN_MAIN1_option = {
+            title: {
+                text: '床位、诊查、检查收入分析'
+            },
+            tooltip: {
+                trigger: 'axis',
+            },
+            legend: {
+                orient: 'horizontal',
+                bottom:'2%',
+                data:['床位收入','诊查收入','检查收入']
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '8%',
+                containLabel: true
+            },
+            toolbox: {
+                feature: {
+//                    saveAsImage: {}
+                }
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: ['周一','周二','周三','周四','周五','周六','周日']
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [
+                {
+                    name:'床位收入',
+                    type:'line',
+                    stack: '总量',
+                    data:[120, 132, 101, 134, 90, 230, 210]
+                },
+                {
+                    name:'诊查收入',
+                    type:'line',
+                    stack: '总量',
+                    data:[220, 182, 191, 234, 290, 330, 310]
+                },
+                {
+                    name:'检查收入',
+                    type:'line',
+                    stack: '总量',
+                    data:[150, 232, 201, 154, 190, 330, 410]
+                }
+            ]
+        };
+        MANZHEN_MAIN1Temp.setOption(MANZHEN_MAIN1_option);
+
+    }
 
 
 </script>

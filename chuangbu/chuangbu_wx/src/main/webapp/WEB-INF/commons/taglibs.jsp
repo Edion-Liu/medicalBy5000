@@ -10,3 +10,4 @@
 <script src="${basepath}/framework/bootstrap/js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="${basepath}/framework/bootstrap/js/bootstrap.min.js"></script>
 <script src="${basepath}/js/app/common/common.js"></script>
+<script src="${basepath}/js/returnTop.js"></script>

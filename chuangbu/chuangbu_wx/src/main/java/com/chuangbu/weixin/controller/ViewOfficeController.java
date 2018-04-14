@@ -17,10 +17,19 @@ public class ViewOfficeController {
 	public String officeReport() {
 		return "office/report/report";
 	}
+
+	@RequestMapping(value = "/reporttest")
+	public String reporttest() {
+		return "office/report/test";
+	}
+
+
 	@RequestMapping(value = "/followup")
 	public String officeFollowUp() {
 		return "office/follow-up/follow-up";
 	}
+
+
 
 
 
