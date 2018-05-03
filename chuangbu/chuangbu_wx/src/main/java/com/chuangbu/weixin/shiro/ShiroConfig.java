@@ -79,7 +79,10 @@ public class ShiroConfig {
 		filterChainDefinitionMap.put("/ajax/common/**", "anon");
 		filterChainDefinitionMap.put("/view/pay/**", "anon");
 		filterChainDefinitionMap.put("/ajax/pay/**", "anon");
-		filterChainDefinitionMap.put("/view/office/**", "authc");
+		/**
+		 *  自定义更改 注释
+		 */
+		//filterChainDefinitionMap.put("/view/office/**", "authc");
 		filterChainDefinitionMap.put("/ajax/office/**", "authc");
 		filterChainDefinitionMap.put("/view/console/**", "authc");
 		filterChainDefinitionMap.put("/ajax/console/**", "authc");

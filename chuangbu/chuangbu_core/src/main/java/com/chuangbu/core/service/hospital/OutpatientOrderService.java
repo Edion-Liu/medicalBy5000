@@ -66,7 +66,7 @@ public class OutpatientOrderService extends AbstractService<OutpatientOrder, Ser
 	 * @param transactionId
 	 * @param status
 	 * @param outpatientNo
-	 * @param appId 
+	 * @param
 	 */
 	public void updateOrderStatus(String outTradeNo, String transactionId, String status, String outpatientNo, String id) {
 		OutpatientOrder po = new OutpatientOrder();

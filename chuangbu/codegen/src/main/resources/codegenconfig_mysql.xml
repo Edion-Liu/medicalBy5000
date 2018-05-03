@@ -23,7 +23,7 @@
 	</table>
 
 	<!--  配置文件在本地磁盘中的位置，绝对路径 -->
-	<templates basepath="D:\Workspaces\chuangbu\codegen\src\main\resources\template">
+	<templates basepath="D:\Workspaces\chuangbu\codegen\src\main\resources\template\414">
 		<template id="po" path="po.ftl" />
 		<template id="domain" path="domain.ftl" />
 		<template id="mapper" path="mapper.ftl" />

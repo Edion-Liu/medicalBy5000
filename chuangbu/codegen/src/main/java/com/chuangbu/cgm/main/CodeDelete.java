@@ -313,7 +313,8 @@ public class CodeDelete {
 	
 	public static void main(String[] args) throws Exception{
 		CodeDelete cd = new CodeDelete();
-		cd.setXmlPath("D:\\workspace\\codegen\\src\\mscodegenconfig.xml");
+//		cd.setXmlPath("D:\\workspace\\codegen\\src\\mscodegenconfig.xml");
+		cd.setXmlPath("G:\\gitProject\\medicalBy5000\\chuangbu\\codegen\\src\\mscodegenconfig.xml");
 		cd.execute();
 	}
 

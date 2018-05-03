@@ -14,7 +14,7 @@
 		<dbHelperClass>com.suixingpay.cgm.db.impl.OracleHelper</dbHelperClass>
 		<url>jdbc:oracle:thin:@172.16.135.251:1521:BAP</url>
 		<username>rcs</username>
-		<password>rcs_sit</password>
+		<password>rcs_sit</password>meishi
 	</database>
 
 	<!--  这里配置所用到的表 ，表之间用逗号分隔 -->
