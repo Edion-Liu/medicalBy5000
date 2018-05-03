@@ -15,7 +15,7 @@
 		<junit-version>4.12</junit-version>
 		<shiroVersion>1.2.2</shiroVersion>
 	</properties>
-	
+
 	<!--继承spring-boot-starter-parent的maven配置-->
     <parent>
         <groupId>org.springframework.boot</groupId>

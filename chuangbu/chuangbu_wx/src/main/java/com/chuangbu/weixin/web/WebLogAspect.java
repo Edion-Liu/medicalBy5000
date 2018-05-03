@@ -47,23 +47,23 @@ public class WebLogAspect {
         logger.info("ARGS : " + Arrays.toString(joinPoint.getArgs()));
         
         
-			HttpSession session = request.getSession(false);
-	        if (session == null) {
-	        	session = request.getSession(true);
-	        }
-	        
-	        String appId = request.getParameter("appId");
-            if(StringUtils.isBlank(appId)){
-            	appId = (String) session.getAttribute("appId");
-        		if(StringUtils.isBlank(appId)){
-            	 HttpServletResponse response = attributes.getResponse();
-                 response.sendRedirect("404"); 
-        		}else{
-        			session.setAttribute("appId", appId);
-        		}
-            }else{
-	          	 session.setAttribute("appId", appId);
-	        }
+//			HttpSession session = request.getSession(false);
+//	        if (session == null) {
+//	        	session = request.getSession(true);
+//	        }
+//
+//	        String appId = request.getParameter("appId");
+//            if(StringUtils.isBlank(appId)){
+//            	appId = (String) session.getAttribute("appId");
+//        		if(StringUtils.isBlank(appId)){
+//            	 HttpServletResponse response = attributes.getResponse();
+//                 response.sendRedirect("404");
+//        		}else{
+//        			session.setAttribute("appId", appId);
+//        		}
+//            }else{
+//	          	 session.setAttribute("appId", appId);
+//	        }
     }
 
     @AfterReturning(returning = "ret", pointcut = "webLog()")
